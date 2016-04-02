@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BusinessDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Connection">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeID" Type="Int32" />
+    <Property Name="PartnerID" Type="Int32" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Connectio__Emplo__15502E78" FromRole="Connections" ToRole="Employees" />
+    <NavigationProperty Name="Partner" Relationship="Self.FK__Connectio__Partn__164452B1" FromRole="Connections" ToRole="Partners" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Supervisor" Type="Int32" />
+    <NavigationProperty Name="Connections" Relationship="Self.FK__Connectio__Emplo__15502E78" FromRole="Employees" ToRole="Connections" />
+    <NavigationProperty Name="Employees1" Relationship="Self.FK__Employees__Super__108B795B" FromRole="Employees" ToRole="Employees1" />
+    <NavigationProperty Name="Employee1" Relationship="Self.FK__Employees__Super__108B795B" FromRole="Employees1" ToRole="Employees" />
+  </EntityType>
+  <EntityType Name="Partner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Connections" Relationship="Self.FK__Connectio__Partn__164452B1" FromRole="Partners" ToRole="Connections" />
+  </EntityType>
+  <Association Name="FK__Connectio__Emplo__15502E78">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Connections" Type="Self.Connection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Connections">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Connectio__Partn__164452B1">
+    <End Role="Partners" Type="Self.Partner" Multiplicity="0..1" />
+    <End Role="Connections" Type="Self.Connection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partners">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Connections">
+        <PropertyRef Name="PartnerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employees__Super__108B795B">
+    <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Employees1" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Employees1">
+        <PropertyRef Name="Supervisor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BusinessDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Connections" EntityType="Self.Connection" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Partners" EntityType="Self.Partner" />
+    <AssociationSet Name="FK__Connectio__Emplo__15502E78" Association="Self.FK__Connectio__Emplo__15502E78">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Connections" EntitySet="Connections" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Connectio__Partn__164452B1" Association="Self.FK__Connectio__Partn__164452B1">
+      <End Role="Partners" EntitySet="Partners" />
+      <End Role="Connections" EntitySet="Connections" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employees__Super__108B795B" Association="Self.FK__Employees__Super__108B795B">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Employees1" EntitySet="Employees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
