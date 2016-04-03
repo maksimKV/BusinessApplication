@@ -88,7 +88,13 @@ namespace BusinessApplication.Controllers
         [HttpGet]
         public void RemoveEmployee(int id)
         {
-
+            using (var context = new BusinessDBEntities())
+            {
+                Employee employee = new Employee { ID = id };
+                context.Employees.Attach(employee);
+                context.Employees.Remove(employee);
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -21,8 +21,8 @@ CREATE TABLE Partners (
 
 CREATE TABLE Connections (
 	ID int IDENTITY(1,1) PRIMARY KEY,
-	EmployeeID int FOREIGN KEY REFERENCES Employees(ID),
-	PartnerID int FOREIGN KEY REFERENCES Partners(ID)
+	EmployeeID int FOREIGN KEY REFERENCES Employees(ID) ON DELETE CASCADE,
+	PartnerID int FOREIGN KEY REFERENCES Partners(ID) ON DELETE CASCADE
 );
 
 INSERT INTO Employees (Name, Position, Supervisor) VALUES

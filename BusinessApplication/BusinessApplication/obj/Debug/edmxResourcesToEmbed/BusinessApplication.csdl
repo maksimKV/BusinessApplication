@@ -33,7 +33,9 @@
     <NavigationProperty Name="Connections" Relationship="Self.FK__Connectio__Partn__164452B1" FromRole="Partners" ToRole="Connections" />
   </EntityType>
   <Association Name="FK__Connectio__Emplo__15502E78">
-    <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Employees" Type="Self.Employee" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Connections" Type="Self.Connection" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employees">
@@ -45,7 +47,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Connectio__Partn__164452B1">
-    <End Role="Partners" Type="Self.Partner" Multiplicity="0..1" />
+    <End Role="Partners" Type="Self.Partner" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Connections" Type="Self.Connection" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Partners">
