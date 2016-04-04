@@ -10,7 +10,6 @@ namespace BusinessApplication.Controllers
 {
     public class EmployeeController : ApiController
     {
-        /*
         [Route("employees")]
         [HttpGet]
         public IHttpActionResult AllEmployees()
@@ -39,42 +38,48 @@ namespace BusinessApplication.Controllers
                         connections.Add(partner);
                     }
 
-                    Object supervisor = null;
+                    List<Object> supervisors = new List<Object>();
+                    //Object supervisor = null;
                     List<Object> employees = new List<Object>();
 
                     // Getting the supervisor
-                    if (value.Employee1 != null)
+                    if (value.Supervisors != null)
                     {
-                        supervisor = new
+                        foreach (Supervisor manager in value.Supervisors)
                         {
-                            ID = value.Employee1.ID,
-                            Name = value.Employee1.Name,
-                            Position = value.Employee1.Position
-                        };
+                          Object supervisor = new
+                            {
+                                ID = manager.Employee1.ID,
+                                Name = manager.Employee1.Name,
+                                Position = manager.Employee1.Position
+                            };
+
+                            supervisors.Add(supervisor);
+                        }
                     }
 
                     // Getting the subordunates, if any
-                    if (value.Employees1 != null)
+                    if (value.Supervisors1 != null)
                     {
-                        foreach (Employee subordinate in value.Employees1)
+                        foreach (Supervisor subordinate in value.Supervisors1)
                         {
                             Object assistant = new
                             {
-                                ID = subordinate.ID,
-                                Name = subordinate.Name,
-                                Position = subordinate.Position
+                                ID = subordinate.Employee.ID,
+                                Name = subordinate.Employee.Name,
+                                Position = subordinate.Employee.Position
                             };
 
                             employees.Add(assistant);
                         }
                     }
-
+                    
                     Object employee = new
                     {
                         ID = value.ID,
                         Name = value.Name,
                         Position = value.Position,
-                        Supervisor = supervisor,
+                        Supervisor = supervisors,
                         Subordinates = employees,
                         Partners = connections
                     };
@@ -84,7 +89,6 @@ namespace BusinessApplication.Controllers
             }
             return Ok(allEmployees);
         }
-        */
 
         [Route("employees/remove/{id}")]
         [HttpGet]
