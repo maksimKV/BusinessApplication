@@ -10,6 +10,7 @@ namespace BusinessApplication.Controllers
 {
     public class EmployeeController : ApiController
     {
+        /*
         [Route("employees")]
         [HttpGet]
         public IHttpActionResult AllEmployees()
@@ -83,6 +84,7 @@ namespace BusinessApplication.Controllers
             }
             return Ok(allEmployees);
         }
+        */
 
         [Route("employees/remove/{id}")]
         [HttpGet]

@@ -18,18 +18,19 @@ namespace BusinessApplication
         public Employee()
         {
             this.Connections = new HashSet<Connection>();
-            this.Employees1 = new HashSet<Employee>();
+            this.Supervisors = new HashSet<Supervisor>();
+            this.Supervisors1 = new HashSet<Supervisor>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
         public string Position { get; set; }
-        public Nullable<int> Supervisor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Connection> Connections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees1 { get; set; }
-        public virtual Employee Employee1 { get; set; }
+        public virtual ICollection<Supervisor> Supervisors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supervisor> Supervisors1 { get; set; }
     }
 }

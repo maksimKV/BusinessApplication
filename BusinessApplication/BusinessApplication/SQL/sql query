@@ -8,8 +8,13 @@ USE BusinessDB;
 CREATE TABLE Employees (
 	ID int IDENTITY(1,1) PRIMARY KEY,
 	Name varchar(255) NOT NULL,
-	Position varchar(255) NOT NULL,
-	Supervisor int FOREIGN KEY REFERENCES Employees(ID)
+	Position varchar(255) NOT NULL
+);
+
+CREATE TABLE Supervisors (
+	ID int IDENTITY(1,1) PRIMARY KEY,
+	SupervisorID int FOREIGN KEY REFERENCES Employees(ID),
+	EmployeeID int FOREIGN KEY REFERENCES Employees(ID)
 );
 
 CREATE TABLE Partners (
@@ -25,10 +30,14 @@ CREATE TABLE Connections (
 	PartnerID int FOREIGN KEY REFERENCES Partners(ID) ON DELETE CASCADE
 );
 
-INSERT INTO Employees (Name, Position, Supervisor) VALUES
-( 'David Coverdale', 'Manager', null ), ( 'Sharon den Adel', 'Manager', null ),
-( 'Tommy Aldridge', 'Underwriter', 1 ), ( 'Reb Beach', 'Personal Assistant', 1 ), ( 'Joel Hoekstra', 'Accountant', 1),
-( 'Robert Westerholt', 'Legal Adviser', 2), ( 'Jeroen van Veen', 'System Administrator', 2), ( 'Ruud Jolie', 'Designer', 2);
+INSERT INTO Employees (Name, Position) VALUES
+( 'David Coverdale', 'Manager' ), ( 'Sharon den Adel', 'Manager' ),
+( 'Tommy Aldridge', 'Underwriter' ), ( 'Reb Beach', 'Personal Assistant' ), ( 'Joel Hoekstra', 'Accountant' ),
+( 'Robert Westerholt', 'Legal Adviser' ), ( 'Jeroen van Veen', 'System Administrator' ), ( 'Ruud Jolie', 'Designer' );
+
+INSERT INTO Supervisors (SupervisorID, EmployeeID) VALUES
+( 1, 3 ), ( 1, 4 ), ( 1, 5 ),
+( 2, 6 ), ( 2, 7 ), ( 2, 8 );
 
 INSERT INTO Partners (Name, Email, Phone) VALUES
 ( 'James Hetfield', 'hetfield@yahoo.com', '+1-202-555-0114' ), ( 'Steve Harris', 'harris@yahoo.com', '+1-202-555-0139' ),
@@ -49,3 +58,18 @@ INSERT INTO Connections (EmployeeID, PartnerID) VALUES
 (6, 14), (6, 15), (6, 16), (6, 9), (6, 19),
 (7, 17), (7, 18), (7, 19),
 (8, 20), (8, 21), (8, 22), (8, 14);
+
+GO
+
+CREATE TRIGGER EmployeeDeleted
+ON Employees
+INSTEAD OF DELETE
+AS 
+BEGIN
+	DELETE Supervisors FROM Supervisors, deleted
+	WHERE Supervisors.EmployeeID = deleted.ID 
+	OR Supervisors.SupervisorID = deleted.ID;
+
+	DELETE Employees FROM Employees, deleted
+	WHERE Employees.ID = deleted.ID;
+END

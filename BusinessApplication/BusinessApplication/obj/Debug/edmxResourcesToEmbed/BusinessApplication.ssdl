@@ -15,7 +15,6 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Position" Type="varchar" MaxLength="255" Nullable="false" />
-    <Property Name="Supervisor" Type="int" />
   </EntityType>
   <EntityType Name="Partners">
     <Key>
@@ -26,7 +25,15 @@
     <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Connectio__Emplo__15502E78">
+  <EntityType Name="Supervisors">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SupervisorID" Type="int" />
+    <Property Name="EmployeeID" Type="int" />
+  </EntityType>
+  <Association Name="FK__Connectio__Emplo__182C9B23">
     <End Role="Employees" Type="Self.Employees" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -40,7 +47,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Connectio__Partn__164452B1">
+  <Association Name="FK__Connectio__Partn__1920BF5C">
     <End Role="Partners" Type="Self.Partners" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
@@ -54,15 +61,27 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Employees__Super__108B795B">
+  <Association Name="FK__Superviso__Emplo__1367E606">
     <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
-    <End Role="Employees1" Type="Self.Employees" Multiplicity="*" />
+    <End Role="Supervisors" Type="Self.Supervisors" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employees">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="Employees1">
-        <PropertyRef Name="Supervisor" />
+      <Dependent Role="Supervisors">
+        <PropertyRef Name="EmployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Superviso__Super__1273C1CD">
+    <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
+    <End Role="Supervisors" Type="Self.Supervisors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employees">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Supervisors">
+        <PropertyRef Name="SupervisorID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -70,17 +89,22 @@
     <EntitySet Name="Connections" EntityType="Self.Connections" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Partners" EntityType="Self.Partners" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Connectio__Emplo__15502E78" Association="Self.FK__Connectio__Emplo__15502E78">
+    <EntitySet Name="Supervisors" EntityType="Self.Supervisors" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Connectio__Emplo__182C9B23" Association="Self.FK__Connectio__Emplo__182C9B23">
       <End Role="Employees" EntitySet="Employees" />
       <End Role="Connections" EntitySet="Connections" />
     </AssociationSet>
-    <AssociationSet Name="FK__Connectio__Partn__164452B1" Association="Self.FK__Connectio__Partn__164452B1">
+    <AssociationSet Name="FK__Connectio__Partn__1920BF5C" Association="Self.FK__Connectio__Partn__1920BF5C">
       <End Role="Partners" EntitySet="Partners" />
       <End Role="Connections" EntitySet="Connections" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employees__Super__108B795B" Association="Self.FK__Employees__Super__108B795B">
+    <AssociationSet Name="FK__Superviso__Emplo__1367E606" Association="Self.FK__Superviso__Emplo__1367E606">
       <End Role="Employees" EntitySet="Employees" />
-      <End Role="Employees1" EntitySet="Employees" />
+      <End Role="Supervisors" EntitySet="Supervisors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Superviso__Super__1273C1CD" Association="Self.FK__Superviso__Super__1273C1CD">
+      <End Role="Employees" EntitySet="Employees" />
+      <End Role="Supervisors" EntitySet="Supervisors" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

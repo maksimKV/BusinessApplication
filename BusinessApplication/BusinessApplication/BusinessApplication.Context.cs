@@ -28,5 +28,6 @@ namespace BusinessApplication
         public virtual DbSet<Connection> Connections { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Partner> Partners { get; set; }
+        public virtual DbSet<Supervisor> Supervisors { get; set; }
     }
 }
