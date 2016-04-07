@@ -67,5 +67,19 @@ namespace BusinessApplication.Controllers
 
             return Ok(allPartners);
         }
+
+        [Route("partners/remove/{id}")]
+        [HttpGet]
+        public void RemovePartner(int id)
+        {
+            using (var context = new BusinessDBEntities())
+            {
+                Partner partner = new Partner { ID = id };
+                context.Partners.Attach(partner);
+                context.Partners.Remove(partner);
+                context.SaveChanges();
+            }
+        }
+
     }
 }
