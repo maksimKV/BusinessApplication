@@ -25,6 +25,7 @@ namespace BusinessApplication.Controllers
 
                     List<Object> connections = new List<Object>();
 
+                    // Getting the partners
                     foreach (Connection connection in value.Connections)
                     {
                         Object partner = new
@@ -39,7 +40,6 @@ namespace BusinessApplication.Controllers
                     }
 
                     List<Object> supervisors = new List<Object>();
-                    //Object supervisor = null;
                     List<Object> employees = new List<Object>();
 
                     // Getting the supervisor
