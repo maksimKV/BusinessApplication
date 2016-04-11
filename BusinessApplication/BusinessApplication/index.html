@@ -1,11 +1,17 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="BusinessApplication">
 <head>
     <title>Business Application</title>
 	<meta charset="utf-8" />
 </head>
-<body>
+<body ng-controller="AppController" data-ng-init="init()">
+
+    <employees></employees>
 
     <script src="Scripts/angular.min.js"></script>
+    <script src="App/app.js"></script>
+    <script src="App/Controllers/AppController.js"></script>
+    <script src="App/Directives/EmployeesDirective.js"></script>
+    <script src="App/Services/RequestService.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 (function(){
 
-var app = angular.module('BusinessApplication', []);
+    var app = angular.module('BusinessApplication', []);
 	
 }());
