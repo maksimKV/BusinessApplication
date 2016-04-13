@@ -2,11 +2,39 @@
 <html ng-app="BusinessApplication">
 <head>
     <title>Business Application</title>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href="Content/styles.css" media="screen" rel="stylesheet">
 	<meta charset="utf-8" />
 </head>
 <body ng-controller="AppController" data-ng-init="init()">
 
-    <employees></employees>
+    <div id="wrapper">
+
+        <div id="header">
+            <h1>Business Application</h1>
+
+            <ul>
+                <li ng-click="SetOption('home')">Home</li>
+                <li ng-click="SetOption('employees')">Employees</li>
+                <li ng-click="SetOption('partners')">Partners</li>
+            </ul>
+        </div>
+
+        <div id="main">
+
+            <!-- All employee related templating -->
+            <employees ngIf="option == employees"></employees>
+            <!-- End of employee related templating-->
+
+            <!-- All partner related templating -->
+            <partners ngIf="option == partners"></partners>
+            <!-- End of partner related templating -->
+        </div>
+
+        <div id="side">
+            
+        </div>
+    </div>
 
     <script src="Scripts/angular.min.js"></script>
     <script src="App/app.js"></script>

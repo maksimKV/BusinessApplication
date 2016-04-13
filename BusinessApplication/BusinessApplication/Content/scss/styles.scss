@@ -1,0 +1,66 @@
+$red: #FF0000;
+$lighter-red: #F31414;
+
+#wrapper {
+	position: relative;
+	display: block;
+
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#header {
+	position: relative;
+	display: block;
+	
+	width: 1200px;
+
+	h1 {
+		font-family: 'Kaushan Script', cursive;
+		font-size: 44px;
+
+		margin: 30px 0px;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0px;
+
+		position: absolute;
+		right: 0px;
+		top: 30px;
+
+		li {
+			display: block;
+			float: left;
+
+			margin: 0px 5px;
+			padding: 5px 10px;
+
+			color: #fff;
+			font-size: 19px;
+
+			background-color: $red;
+			border-radius: 6px;
+
+			cursor: pointer;
+
+			&:hover {
+				background-color: $lighter-red;
+			}
+		}
+	}
+}
+
+#main {
+	position: relative;
+	display: block;
+
+	float: left;
+	width: 800px;
+}
+
+#side {
+	@extend #main;
+	width: 400px;
+}
