@@ -31,19 +31,27 @@
   display: block;
   float: left;
   margin: 0px 5px;
-  padding: 5px 10px;
-  color: #fff;
-  font-size: 19px;
-  background-color: red;
-  border-radius: 6px;
   cursor: pointer;
 }
-/* line 48, scss/styles.scss */
+/* line 40, scss/styles.scss */
 #header ul li:hover {
   background-color: #f31414;
 }
+/* line 44, scss/styles.scss */
+#header ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  font-size: 19px;
+  background-color: red;
+  border-radius: 6px;
+}
+/* line 54, scss/styles.scss */
+#header ul li a:hover {
+  color: #E5E5E5;
+}
 
-/* line 55, scss/styles.scss */
+/* line 62, scss/styles.scss */
 #main, #side {
   position: relative;
   display: block;
@@ -51,7 +59,7 @@
   width: 800px;
 }
 
-/* line 63, scss/styles.scss */
+/* line 70, scss/styles.scss */
 #side {
   width: 400px;
 }

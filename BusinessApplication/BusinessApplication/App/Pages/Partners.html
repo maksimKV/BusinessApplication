@@ -1,0 +1,28 @@
+﻿<div id="main">
+    <h2>All Partners</h2>
+
+    <table class="singlePartner">
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>View</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+
+        <tr ng-repeat="partner in partners">
+            <td>{{partner.Name}}</td>
+            <td>{{partner.Email}}</td>
+            <td>{{partner.Phone}}</td>
+            <td><a href="#">View</a></td>
+            <td><a href="#">Update</a></td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+    </table>
+
+</div>
+
+<div id="side">
+    <a href="#" class="button">Create Partner</a>
+</div>

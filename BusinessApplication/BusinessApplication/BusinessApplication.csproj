@@ -281,8 +281,8 @@
   <ItemGroup>
     <Content Include="App\app.js" />
     <Content Include="App\Controllers\AppController.js" />
-    <Content Include="App\Directives\Templates\EmployeesTemplate.html" />
-    <Content Include="App\Directives\EmployeesDirective.js" />
+    <Content Include="App\Pages\Employees.html" />
+    <Content Include="App\Pages\Home.html" />
     <Content Include="App\Services\RequestService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="BusinessApplication.Context.tt">
@@ -297,12 +297,14 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\styles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -363,6 +365,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\Directives\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

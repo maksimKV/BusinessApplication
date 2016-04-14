@@ -35,18 +35,25 @@ $lighter-red: #F31414;
 			float: left;
 
 			margin: 0px 5px;
-			padding: 5px 10px;
-
-			color: #fff;
-			font-size: 19px;
-
-			background-color: $red;
-			border-radius: 6px;
-
 			cursor: pointer;
 
 			&:hover {
 				background-color: $lighter-red;
+			}
+
+			a {
+				color: #fff;
+				text-decoration: none;
+				
+				padding: 5px 10px;				
+				font-size: 19px;
+
+				background-color: $red;
+				border-radius: 6px;
+
+				&:hover {
+					color: #E5E5E5;
+				}
 			}
 		}
 	}

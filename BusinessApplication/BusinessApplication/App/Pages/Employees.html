@@ -1,0 +1,26 @@
+﻿<div id="main">
+    <h2>All Employees</h2>
+
+    <table class="singleEmployee">
+        <tr>
+            <td>Name</td>
+            <td>Position</td>
+            <td>View</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </tr>
+        
+        <tr ng-repeat="employee in employees">
+            <td>{{employee.Name}}</td>
+            <td>{{employee.Position}}</td>
+            <td><a href="#">View</a></td>
+            <td><a href="#">Update</a></td>
+            <td><a href="#">Delete</a></td>
+        </tr>
+    </table>
+
+</div>
+
+<div id="side">
+    <a href="#" class="button">Create Employee</a>
+</div>

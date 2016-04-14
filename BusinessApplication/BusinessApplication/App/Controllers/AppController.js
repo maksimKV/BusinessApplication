@@ -20,7 +20,11 @@ app.controller('AppController', ['$scope', '$log', 'RequestService',
 	        });
 	    }
 
-	    $scope.StartGame = function (value) {
+	    $scope.$watch('employees', function () {
+	        console.log($scope.employees);
+	    });
+
+	    $scope.SetOption = function (value) {
 	        switch(true)
 	        {
 	            case (value == "home"):
