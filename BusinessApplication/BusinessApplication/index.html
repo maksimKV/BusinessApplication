@@ -14,32 +14,33 @@
             <h1>Business Application</h1>
 
             <ul>
-                <li ng-click="SetOption('home')">Home</li>
-                <li ng-click="SetOption('employees')">Employees</li>
-                <li ng-click="SetOption('partners')">Partners</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#employees">Employees</a></li>
+                <li><a href="#partners">Partners</a></li>
             </ul>
         </div>
 
+        <div ng-view></div>
+
+        <!--
         <div id="main">
 
-            <!-- All employee related templating -->
-            <employees ngIf="option == employees"></employees>
-            <!-- End of employee related templating-->
+            <employees ng-if="option == employees" data="employees"></employees>
+            <h1 ng-if="option == employees">It detects clicl</h1>
 
-            <!-- All partner related templating -->
-            <partners ngIf="option == partners"></partners>
-            <!-- End of partner related templating -->
+            <partners ng-if="option == partners"></partners>
         </div>
 
         <div id="side">
             
         </div>
+    -->
     </div>
 
     <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
     <script src="App/app.js"></script>
     <script src="App/Controllers/AppController.js"></script>
-    <script src="App/Directives/EmployeesDirective.js"></script>
     <script src="App/Services/RequestService.js"></script>
 </body>
 </html>
