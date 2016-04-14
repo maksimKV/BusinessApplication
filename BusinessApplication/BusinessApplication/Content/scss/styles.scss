@@ -37,10 +37,6 @@ $lighter-red: #F31414;
 			margin: 0px 5px;
 			cursor: pointer;
 
-			&:hover {
-				background-color: $lighter-red;
-			}
-
 			a {
 				color: #fff;
 				text-decoration: none;
@@ -53,6 +49,7 @@ $lighter-red: #F31414;
 
 				&:hover {
 					color: #E5E5E5;
+					background-color: $lighter-red;
 				}
 			}
 		}
@@ -65,6 +62,34 @@ $lighter-red: #F31414;
 
 	float: left;
 	width: 800px;
+
+	table {
+		width: 100%;
+
+		th {
+			background-color: #a8a8a8;
+			padding: 5px 20px;
+		}
+
+		td {
+			background-color: #fff;
+			padding: 5px 20px;
+
+			&.alternative {
+				background-color: #d3d3d3;
+			}
+
+			a {
+				color: $red;
+				text-decoration: none;
+				font-weight: bold;
+
+				&:hover {
+					color: #ff4c4c;
+				}
+			}
+		}
+	}
 }
 
 #side {

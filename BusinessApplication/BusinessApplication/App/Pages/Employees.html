@@ -2,21 +2,23 @@
     <h2>All Employees</h2>
 
     <table class="singleEmployee">
-        <tr>
-            <td>Name</td>
-            <td>Position</td>
-            <td>View</td>
-            <td>Update</td>
-            <td>Delete</td>
-        </tr>
-        
-        <tr ng-repeat="employee in employees">
-            <td>{{employee.Name}}</td>
-            <td>{{employee.Position}}</td>
-            <td><a href="#">View</a></td>
-            <td><a href="#">Update</a></td>
-            <td><a href="#">Delete</a></td>
-        </tr>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>View</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+
+            <tr ng-repeat="employee in employees" ng-class-even="alternative">
+                <td>{{employee.Name}}</td>
+                <td>{{employee.Position}}</td>
+                <td class="option"><a href="#">View</a></td>
+                <td class="option"><a href="#">Update</a></td>
+                <td class="option"><a href="#">Delete</a></td>
+            </tr>
+        </tbody>
     </table>
 
 </div>

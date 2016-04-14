@@ -3,15 +3,15 @@
 
     <table class="singlePartner">
         <tr>
-            <td>Name</td>
-            <td>Email</td>
-            <td>Phone</td>
-            <td>View</td>
-            <td>Update</td>
-            <td>Delete</td>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>View</th>
+            <th>Update</th>
+            <th>Delete</th>
         </tr>
 
-        <tr ng-repeat="partner in partners">
+        <tr ng-repeat="partner in partners" ng-class-even="alternative">
             <td>{{partner.Name}}</td>
             <td>{{partner.Email}}</td>
             <td>{{partner.Phone}}</td>
