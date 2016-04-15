@@ -17,27 +17,27 @@
                 templateUrl: 'App/Pages/Employees.html',
                 controller: 'AppController'
             })
-
+            
             // route for the single employee page
-            when('/emloyee/:employeeID', {
+            .when('/emloyee/:employeeID', {
                 templateUrl: 'App/Pages/Employee.html',
                 controller: 'AppController'
             })
 
             // route for the adding of employees page
-            when('/emloyee/add', {
+            .when('/emloyee/add', {
                 templateUrl: 'App/Pages/AddEmployee.html',
                 controller: 'AppController'
             })
 
             // route for the removing of employees page
-            when('/emloyee/remove/:employeeID', {
+            .when('/emloyee/remove/:employeeID', {
                 templateUrl: 'App/Pages/RemoveEmployee.html',
                 controller: 'AppController'
             })
 
             // route for the updating of employees page
-            when('/emloyee/update/:employeeID', {
+            .when('/emloyee/update/:employeeID', {
                 templateUrl: 'App/Pages/UpdateEmployee.html',
                 controller: 'AppController'
             })
@@ -49,25 +49,25 @@
             })
 
             // route for the single partner page
-            when('/partner/:partnerID', {
+            .when('/partner/:partnerID', {
                 templateUrl: 'App/Pages/Partner.html',
                 controller: 'AppController'
             })
 
             // route for the adding of partners page
-            when('/partner/add', {
+            .when('/partner/add', {
                 templateUrl: 'App/Pages/AddPartner.html',
                 controller: 'AppController'
             })
 
             // route for the removing of partners page
-            when('/partner/remove/:partnerID', {
+            .when('/partner/remove/:partnerID', {
                 templateUrl: 'App/Pages/RemovePartner.html',
                 controller: 'AppController'
             })
 
             // route for the updating of partners page
-            when('/partner/update/:partnerID', {
+            .when('/partner/update/:partnerID', {
                 templateUrl: 'App/Pages/UpdatePartner.html',
                 controller: 'AppController'
             })
