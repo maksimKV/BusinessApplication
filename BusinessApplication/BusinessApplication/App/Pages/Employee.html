@@ -12,6 +12,7 @@
             <td>{{employee.Name}}</td>
             <td>{{employee.Position}}</td>
 
+            <!-- Supervisors -->
             <td ng-if="employee.Supervisor.length == 0">None</td>
             <td ng-if="employee.Supervisor.length != 0">
                 <table>
@@ -19,6 +20,31 @@
                         <td>{{supervisor.Name}}</td>
                         <td>{{supervisor.Position}}</td>
                         <td><a ng-href="#/employees/remove/manager/{{supervisor.ID}}">Remove</a></td>
+                    </tr>
+                </table>
+            </td>
+
+            <!-- Subordinates -->
+            <td ng-if="employee.Subordinates.length == 0">None</td>
+            <td ng-if="employee.Subordinates.length != 0">
+                <table>
+                    <tr ng-repeat="subordinate in employee.Subordinates">
+                        <td>{{subordinate.Name}}</td>
+                        <td>{{subordinate.Position}}</td>
+                        <td><a ng-href="#/employees/remove/manager/{{subordinate.ID}}">Remove</a></td>
+                    </tr>
+                </table>
+            </td>
+
+            <!-- Partners -->
+            <td ng-if="employee.Partners.length == 0">None</td>
+            <td ng-if="employee.Partners.length != 0">
+                <table>
+                    <tr ng-repeat="partner in employee.Partners">
+                        <td>{{partner.Name}}</td>
+                        <td>{{partner.Phone}}</td>
+                        <td>{{partner.Email}}</td>
+                        <td><a ng-href="#/employees/remove/partnership/{{partner.ID}}">Remove</a></td>
                     </tr>
                 </table>
             </td>
