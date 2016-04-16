@@ -19,7 +19,7 @@
             })
             
             // route for the single employee page
-            .when('/emloyee/:employeeID', {
+            .when('/emloyee/view/:employeeID', {
                 templateUrl: 'App/Pages/Employee.html',
                 controller: 'AppController'
             })
@@ -49,7 +49,7 @@
             })
 
             // route for the single partner page
-            .when('/partner/:partnerID', {
+            .when('/partner/view/:partnerID', {
                 templateUrl: 'App/Pages/Partner.html',
                 controller: 'AppController'
             })

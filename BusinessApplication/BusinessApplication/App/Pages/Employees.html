@@ -14,9 +14,9 @@
             <tr ng-repeat="employee in employees" ng-class-even="alternative">
                 <td>{{employee.Name}}</td>
                 <td>{{employee.Position}}</td>
-                <td class="option"><a href="#">View</a></td>
-                <td class="option"><a href="#">Update</a></td>
-                <td class="option"><a href="#">Delete</a></td>
+                <td class="option"><a ng-href="#/emloyee/view/{{employee.ID}}">View</a></td>
+                <td class="option"><a ng-href="#/emloyee/update/{{employee.ID}}">Update</a></td>
+                <td class="option"><a ng-href="#/emloyee/remove/{{employee.ID}}">Delete</a></td>
             </tr>
         </tbody>
     </table>

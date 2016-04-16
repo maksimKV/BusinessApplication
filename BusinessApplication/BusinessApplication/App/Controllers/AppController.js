@@ -1,10 +1,13 @@
 ﻿var app = angular.module('BusinessApplication');
 
-app.controller('AppController', ['$scope', '$log', 'RequestService',
-	function ($scope, $log, RequestService) {
+app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 'RequestService',
+	function ($scope, $log, $routeParams, $location, RequestService) {
 
 	    $scope.employees;
 	    $scope.partners;
+
+	    $scope.employee;
+	    $scope.partner;
 
 	    $scope.option = "home";
 
@@ -24,20 +27,23 @@ app.controller('AppController', ['$scope', '$log', 'RequestService',
 	        console.log($scope.employees);
 	    });
 
-	    $scope.SetOption = function (value) {
-	        switch(true)
+	    $scope.$watch('employee', function () {
+	        console.log($scope.employee);
+	    });
+
+	    $scope.$watch('routeParams', function () {
+	        if(typeof $routeParams.employeeID !== 'undefined')
 	        {
-	            case (value == "home"):
-	                $scope.option = "home";
-	                break;
-	            case (value == "employees"):
-	                $scope.option = "employees";
-	                break;
-	            case (value == "partners"):
-	                $scope.option = "partners";
-	                break;
-	            default:
-	                $scope.option = "home";
+	            RequestService.SingleEmployee($routeParams.employeeID).then(function (data) {
+	                $scope.employee = data;
+	            });
 	        }
-	    }
+	        else if (typeof $routeParams.partnerID !== 'undefined')
+	        {
+	            console.log($routeParams.partnerID);
+	        }
+	    });
+
+
+	    
 }]);

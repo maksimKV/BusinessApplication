@@ -12,6 +12,15 @@ app.factory('RequestService', function ($http) {
         });
     }
 
+    RequestService.SingleEmployee = function (id) {
+        return $http.get('http://localhost:60910/employees/view/' + id).then(function (response) {
+            return response.data;
+        }, function (error) {
+            console.log(error);
+            return [];
+        });
+    }
+
     RequestService.AllPartners = function () {
         return $http.get('http://localhost:60910/partners').then(function (response) {
             return response.data;
