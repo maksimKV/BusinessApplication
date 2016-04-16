@@ -72,21 +72,26 @@
   text-align: center;
 }
 /* line 80, scss/styles.scss */
+#main table td ul, #side table td ul {
+  text-align: left;
+  list-style-type: none;
+}
+/* line 85, scss/styles.scss */
 #main table td.alternative, #side table td.alternative {
   background-color: #d3d3d3;
 }
-/* line 84, scss/styles.scss */
+/* line 89, scss/styles.scss */
 #main table td a, #side table td a {
   color: red;
   text-decoration: none;
   font-weight: bold;
 }
-/* line 89, scss/styles.scss */
+/* line 94, scss/styles.scss */
 #main table td a:hover, #side table td a:hover {
   color: #ff4c4c;
 }
 
-/* line 97, scss/styles.scss */
+/* line 102, scss/styles.scss */
 #side {
   width: 400px;
 }

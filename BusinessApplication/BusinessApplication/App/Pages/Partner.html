@@ -1,0 +1,45 @@
+﻿<div id="main">
+    <!-- Employee -->
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+
+        <tr>
+            <td>{{partner.Name}}</td>
+            <td>{{partner.Email}}</td>
+            <td>{{partner.Phone}}</td>
+        </tr>
+    </table>
+
+    <!-- Employees -->
+    <table ng-if="partner.Partners.length != 0">
+        <tr>
+            <th>Partner's Name</th>
+            <th>Partner's Position</th>
+            <th>Partner's Supervisors</th>
+            <th>Remove Partner</th>
+        </tr>
+        <tr ng-repeat="employee in partner.Partners">
+            <td>{{employee.Name}}</td>
+            <td>{{employee.Position}}</td>
+
+            <td ng-if="employee.Supervisors.length != 0">
+                <ul ng-repeat="supervisor in employee.Supervisors">
+                    <li>Name: {{supervisor.Name}}</li>
+                    <li>Position: {{supervisor.Position}}</li>
+                </ul>
+            </td>
+            <td ng-if="employee.Supervisors.length == 0">None</td>
+
+            <td><a ng-href="#/partner/remove/employee/{{employee.ID}}">Remove</a></td>
+        </tr>
+    </table>
+
+</div>
+
+<div id="side">
+
+</div>
