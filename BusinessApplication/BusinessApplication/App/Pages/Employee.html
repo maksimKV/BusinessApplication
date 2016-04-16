@@ -1,53 +1,57 @@
 ﻿<div id="main">
+    <!-- Employee -->
     <table>
         <tr>
             <th>Name</th>
             <th>Position</th>
-            <th>Supervisors</th>
-            <th>Subordinates</th>
-            <th>Partners</th>
         </tr>
 
         <tr>
             <td>{{employee.Name}}</td>
             <td>{{employee.Position}}</td>
+        </tr>
+    </table>
 
-            <!-- Supervisors -->
-            <td ng-if="employee.Supervisor.length == 0">None</td>
-            <td ng-if="employee.Supervisor.length != 0">
-                <table>
-                    <tr ng-repeat="supervisor in employee.Supervisor">
-                        <td>{{supervisor.Name}}</td>
-                        <td>{{supervisor.Position}}</td>
-                        <td><a ng-href="#/employees/remove/manager/{{supervisor.ID}}">Remove</a></td>
-                    </tr>
-                </table>
-            </td>
+    <!-- Supervisors -->
+    <table ng-if="employee.Supervisor.length != 0">
+        <tr>
+            <th>Supervisor's Name</th>
+            <th>Supervisor's Position</th>
+        </tr>
+        <tr ng-repeat="supervisor in employee.Supervisor">
+            <td>{{supervisor.Name}}</td>
+            <td>{{supervisor.Position}}</td>
+            <td><a ng-href="#/employees/remove/manager/{{supervisor.ID}}">Remove</a></td>
+        </tr>
+    </table>
 
-            <!-- Subordinates -->
-            <td ng-if="employee.Subordinates.length == 0">None</td>
-            <td ng-if="employee.Subordinates.length != 0">
-                <table>
-                    <tr ng-repeat="subordinate in employee.Subordinates">
-                        <td>{{subordinate.Name}}</td>
-                        <td>{{subordinate.Position}}</td>
-                        <td><a ng-href="#/employees/remove/manager/{{subordinate.ID}}">Remove</a></td>
-                    </tr>
-                </table>
-            </td>
+    <!-- Subordinates -->
+    <table ng-if="employee.Subordinates.length != 0">
+        <tr>
+            <th>Subordinate's Name</th>
+            <th>Subordinate's Position</th>
+            <th>Remove Subordinate</th>
+        </tr>
+        <tr ng-repeat="subordinate in employee.Subordinates">
+            <td>{{subordinate.Name}}</td>
+            <td>{{subordinate.Position}}</td>
+            <td><a ng-href="#/employees/remove/manager/{{subordinate.ID}}">Remove</a></td>
+        </tr>
+    </table>
 
-            <!-- Partners -->
-            <td ng-if="employee.Partners.length == 0">None</td>
-            <td ng-if="employee.Partners.length != 0">
-                <table>
-                    <tr ng-repeat="partner in employee.Partners">
-                        <td>{{partner.Name}}</td>
-                        <td>{{partner.Phone}}</td>
-                        <td>{{partner.Email}}</td>
-                        <td><a ng-href="#/employees/remove/partnership/{{partner.ID}}">Remove</a></td>
-                    </tr>
-                </table>
-            </td>
+    <!-- Partners -->
+    <table>
+        <tr>
+            <th>Partner's Name</th>
+            <th>Partner's Phone</th>
+            <th>Partner's Email</th>
+            <th>Remove Partner</th>
+        </tr>
+        <tr ng-repeat="partner in employee.Partners">
+            <td class="innerPadding">{{partner.Name}}</td>
+            <td class="innerPadding">{{partner.Phone}}</td>
+            <td class="innerPadding">{{partner.Email}}</td>
+            <td class="innerPadding"><a ng-href="#/employees/remove/partnership/{{partner.ID}}">Remove</a></td>
         </tr>
     </table>
 </div>

@@ -65,6 +65,7 @@ $lighter-red: #F31414;
 
 	table {
 		width: 100%;
+		margin-bottom: 60px;
 
 		th {
 			background-color: #a8a8a8;
@@ -73,7 +74,8 @@ $lighter-red: #F31414;
 
 		td {
 			background-color: #fff;
-			padding: 5px 20px;
+			padding: 5px 10px;
+			text-align: center;
 
 			&.alternative {
 				background-color: #d3d3d3;
