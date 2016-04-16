@@ -30,5 +30,14 @@ app.factory('RequestService', function ($http) {
         });
     }
 
+    RequestService.SinglePartner = function (id) {
+        return $http.get('http://localhost:60910/partners/view/' + id).then(function (response) {
+            return response.data;
+        }, function (error) {
+            console.log(error);
+            return [];
+        });
+    }
+
     return RequestService;
 });

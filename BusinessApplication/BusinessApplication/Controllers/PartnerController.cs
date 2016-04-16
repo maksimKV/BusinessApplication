@@ -22,35 +22,7 @@ namespace BusinessApplication.Controllers
                 foreach(Partner value in values)
                 {
                     List<Object> connections = new List<Object>();
-
-                    // Getting the partners
-                    foreach (Connection connection in value.Connections)
-                    {
-                        // Getting the supervisors
-                        List<Object> supervisors = new List<Object>();
-                        
-                        foreach(Supervisor supervisor in connection.Employee.Supervisors)
-                        {
-                            Object existingSupervisor = new
-                            {
-                                ID = supervisor.Employee1.ID,
-                                Name = supervisor.Employee1.Name,
-                                Position = supervisor.Employee1.Position
-                            };
-
-                            supervisors.Add(existingSupervisor);
-                        }
-
-                        Object employee = new
-                        {
-                            ID = connection.Employee.ID,
-                            Name = connection.Employee.Name,
-                            Position = connection.Employee.Position,
-                            Supervisors = supervisors
-                        };
-
-                        connections.Add(employee);
-                    }
+                    GetPartnerDependencies(value, connections);
 
                     Object partner = new
                     {
@@ -68,6 +40,29 @@ namespace BusinessApplication.Controllers
             return Ok(allPartners);
         }
 
+        [Route("partners/view/{id}")]
+        [HttpGet]
+        public IHttpActionResult SinglePartner(int ID)
+        {
+            using (var context = new BusinessDBEntities())
+            {
+                Partner requiredPartner = context.Partners.Find(ID);
+                List<Object> connections = new List<Object>();
+                GetPartnerDependencies(requiredPartner, connections);
+
+                Object partner = new
+                {
+                    ID = requiredPartner.ID,
+                    Name = requiredPartner.Name,
+                    Email = requiredPartner.Email,
+                    Phone = requiredPartner.Phone,
+                    Partners = connections
+                };
+
+                return Ok(partner);
+            }     
+        }
+
         [Route("partners/remove/{id}")]
         [HttpGet]
         public void RemovePartner(int id)
@@ -78,6 +73,38 @@ namespace BusinessApplication.Controllers
                 context.Partners.Attach(partner);
                 context.Partners.Remove(partner);
                 context.SaveChanges();
+            }
+        }
+
+        private static void GetPartnerDependencies(Partner value, List<object> connections)
+        {
+            // Getting the partners
+            foreach (Connection connection in value.Connections)
+            {
+                // Getting the supervisors
+                List<Object> supervisors = new List<Object>();
+
+                foreach (Supervisor supervisor in connection.Employee.Supervisors)
+                {
+                    Object existingSupervisor = new
+                    {
+                        ID = supervisor.Employee1.ID,
+                        Name = supervisor.Employee1.Name,
+                        Position = supervisor.Employee1.Position
+                    };
+
+                    supervisors.Add(existingSupervisor);
+                }
+
+                Object employee = new
+                {
+                    ID = connection.Employee.ID,
+                    Name = connection.Employee.Name,
+                    Position = connection.Employee.Position,
+                    Supervisors = supervisors
+                };
+
+                connections.Add(employee);
             }
         }
 

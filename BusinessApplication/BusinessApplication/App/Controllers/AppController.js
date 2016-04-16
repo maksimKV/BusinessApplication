@@ -40,7 +40,9 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	        }
 	        else if (typeof $routeParams.partnerID !== 'undefined')
 	        {
-	            console.log($routeParams.partnerID);
+	            RequestService.SinglePartner($routeParams.partnerID).then(function (data) {
+	                $scope.partner = data;
+	            });
 	        }
 	    });
 
