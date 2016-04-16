@@ -1,24 +1,22 @@
 ﻿<div id="main">
     <h2>All Employees</h2>
 
-    <table class="singleEmployee">
-        <tbody>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>View</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>View</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
 
-            <tr ng-repeat="employee in employees" ng-class-even="alternative">
-                <td>{{employee.Name}}</td>
-                <td>{{employee.Position}}</td>
-                <td class="option"><a ng-href="#/emloyee/view/{{employee.ID}}">View</a></td>
-                <td class="option"><a ng-href="#/emloyee/update/{{employee.ID}}">Update</a></td>
-                <td class="option"><a ng-href="#/emloyee/remove/{{employee.ID}}">Delete</a></td>
-            </tr>
-        </tbody>
+        <tr ng-repeat="employee in employees" ng-class-even="alternative">
+            <td>{{employee.Name}}</td>
+            <td>{{employee.Position}}</td>
+            <td class="option"><a ng-href="#/emloyee/view/{{employee.ID}}">View</a></td>
+            <td class="option"><a ng-href="#/emloyee/update/{{employee.ID}}">Update</a></td>
+            <td class="option"><a ng-href="#/emloyee/remove/{{employee.ID}}">Delete</a></td>
+        </tr>
     </table>
 
 </div>

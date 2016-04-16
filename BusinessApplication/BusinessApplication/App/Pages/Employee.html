@@ -1,0 +1,31 @@
+﻿<div id="main">
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Supervisors</th>
+            <th>Subordinates</th>
+            <th>Partners</th>
+        </tr>
+
+        <tr>
+            <td>{{employee.Name}}</td>
+            <td>{{employee.Position}}</td>
+
+            <td ng-if="employee.Supervisor.length == 0">None</td>
+            <td ng-if="employee.Supervisor.length != 0">
+                <table>
+                    <tr ng-repeat="supervisor in employee.Supervisor">
+                        <td>{{supervisor.Name}}</td>
+                        <td>{{supervisor.Position}}</td>
+                        <td><a ng-href="#/employees/remove/manager/{{supervisor.ID}}">Remove</a></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div id="side">
+
+</div>
