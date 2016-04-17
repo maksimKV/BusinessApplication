@@ -31,7 +31,7 @@
             })
 
             // route for the removing of employees page
-            .when('/emloyee/remove/:employeeID', {
+            .when('/emloyee/remove/:employeeName', {
                 templateUrl: 'App/Pages/RemoveEmployee.html',
                 controller: 'AppController'
             })
@@ -61,7 +61,7 @@
             })
 
             // route for the removing of partners page
-            .when('/partner/remove/:partnerID', {
+            .when('/partner/remove/:partnerName', {
                 templateUrl: 'App/Pages/RemovePartner.html',
                 controller: 'AppController'
             })
@@ -69,6 +69,12 @@
             // route for the updating of partners page
             .when('/partner/update/:partnerID', {
                 templateUrl: 'App/Pages/UpdatePartner.html',
+                controller: 'AppController'
+            })
+
+            // route for errors page
+            .when('/error', {
+                templateUrl: 'App/Pages/Error.html',
                 controller: 'AppController'
             })
 
