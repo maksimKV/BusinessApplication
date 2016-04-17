@@ -9,27 +9,17 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	    $scope.employee;
 	    $scope.partner;
 
-	    $scope.option = "home";
+        // Required for the delete/ update and add templates
+	    $scope.employeeName;
+	    $scope.partnerName;
 
 	    $scope.init = function () {
             // Adding the employees
-	        RequestService.AllEmployees().then(function (data) {
-	            $scope.employees = data;
-	        });
+	        GetEmployees();
 
 	        // Adding the partners
-	        RequestService.AllPartners().then(function (data) {
-	            $scope.partners = data;
-	        });
+	        GetPartners();
 	    }
-
-	    $scope.$watch('employees', function () {
-	        console.log($scope.employees);
-	    });
-
-	    $scope.$watch('employee', function () {
-	        console.log($scope.employee);
-	    });
 
 	    $scope.$watch('routeParams', function () {
 	        if(typeof $routeParams.employeeID !== 'undefined')
@@ -44,8 +34,39 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	                $scope.partner = data;
 	            });
 	        }
+
+	        if (typeof $routeParams.employeeName !== 'undefined') {
+	            $scope.employeeName = $routeParams.employeeName;
+	        } 
+	        else if (typeof $routeParams.partnerName !== 'undefined') {
+	            $scope.partnerName = $routeParams.partnerName;
+	        }
 	    });
 
+	    $scope.$on('$routeChangeSuccess', function () {
+	        GetEmployees();
+	        GetPartners();
+	    });
+
+	    $scope.RemoveEmployee = function (employeeID) {
+	        RequestService.RemoveEmployee(employeeID);
+	    };
+
+	    $scope.RemovePartner = function (partnerID) {
+	        RequestService.RemovePartner(partnerID);
+	    };
+
+	    var GetEmployees = function () {
+	        RequestService.AllEmployees().then(function (data) {
+	            $scope.employees = data;
+	        });
+	    };
+
+	    var GetPartners = function () {
+	        RequestService.AllPartners().then(function (data) {
+	            $scope.partners = data;
+	        });
+	    };
 
 	    
 }]);

@@ -15,7 +15,7 @@
             <td>{{employee.Position}}</td>
             <td class="option"><a ng-href="#/emloyee/view/{{employee.ID}}">View</a></td>
             <td class="option"><a ng-href="#/emloyee/update/{{employee.ID}}">Update</a></td>
-            <td class="option"><a ng-href="#/emloyee/remove/{{employee.ID}}">Delete</a></td>
+            <td class="option"><a ng-href="#/emloyee/remove/{{employee.Name}}" ng-click="RemoveEmployee(employee.ID)">Delete</a></td>
         </tr>
     </table>
 

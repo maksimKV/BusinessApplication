@@ -1,6 +1,6 @@
 ﻿var app = angular.module('BusinessApplication');
 
-app.factory('RequestService', function ($http) {
+app.factory('RequestService', function ($http, $location) {
     var RequestService = {};
 
     RequestService.AllEmployees = function () {
@@ -8,7 +8,7 @@ app.factory('RequestService', function ($http) {
             return response.data;
         }, function (error) {
             console.log(error);
-            return [];
+            return $location.path('/error');
         });
     }
 
@@ -17,7 +17,16 @@ app.factory('RequestService', function ($http) {
             return response.data;
         }, function (error) {
             console.log(error);
-            return [];
+            return $location.path('/error');
+        });
+    }
+
+    RequestService.RemoveEmployee = function (id) {
+        return $http.get('http://localhost:60910/employees/remove/' + id).then(function (response) {
+            return response.data;
+        }, function (error) {
+            console.log(error);
+            return $location.path('/error');
         });
     }
 
@@ -26,7 +35,7 @@ app.factory('RequestService', function ($http) {
             return response.data;
         }, function (error) {
             console.log(error);
-            return [];
+            return $location.path('/error');
         });
     }
 
@@ -35,7 +44,16 @@ app.factory('RequestService', function ($http) {
             return response.data;
         }, function (error) {
             console.log(error);
-            return [];
+            return $location.path('/error');
+        });
+    }
+
+    RequestService.RemovePartner = function (id) {
+        return $http.get('http://localhost:60910/partners/remove/' + id).then(function (response) {
+            return response.data;
+        }, function (error) {
+            console.log(error);
+            return $location.path('/error');
         });
     }
 

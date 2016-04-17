@@ -65,7 +65,7 @@ namespace BusinessApplication.Controllers
 
         [Route("partners/remove/{id}")]
         [HttpGet]
-        public void RemovePartner(int id)
+        public IHttpActionResult RemovePartner(int id)
         {
             using (var context = new BusinessDBEntities())
             {
@@ -73,6 +73,8 @@ namespace BusinessApplication.Controllers
                 context.Partners.Attach(partner);
                 context.Partners.Remove(partner);
                 context.SaveChanges();
+
+                return Ok();
             }
         }
 

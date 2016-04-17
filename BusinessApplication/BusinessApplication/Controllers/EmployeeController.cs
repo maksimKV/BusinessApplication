@@ -74,7 +74,7 @@ namespace BusinessApplication.Controllers
 
         [Route("employees/remove/{id}")]
         [HttpGet]
-        public void RemoveEmployee(int id)
+        public IHttpActionResult RemoveEmployee(int id)
         {
             using (var context = new BusinessDBEntities())
             {
@@ -82,6 +82,8 @@ namespace BusinessApplication.Controllers
                 context.Employees.Attach(employee);
                 context.Employees.Remove(employee);
                 context.SaveChanges();
+
+                return Ok();
             }
         }
 

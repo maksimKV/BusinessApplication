@@ -17,7 +17,7 @@
             <td>{{partner.Phone}}</td>
             <td><a ng-href="#/partner/view/{{partner.ID}}">View</a></td>
             <td><a ng-href="#/partner/update/{{partner.ID}}">Update</a></td>
-            <td><a ng-href="#/partner/remove/{{partner.ID}}">Delete</a></td>
+            <td><a ng-href="#/partner/remove/{{partner.Name}}" ng-click="RemovePartner(partner.ID)">Delete</a></td>
         </tr>
     </table>
 

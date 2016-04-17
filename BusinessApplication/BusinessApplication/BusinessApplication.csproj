@@ -283,8 +283,12 @@
     <Content Include="App\Controllers\AppController.js" />
     <Content Include="App\Pages\Employee.html" />
     <Content Include="App\Pages\Employees.html" />
+    <Content Include="App\Pages\Error.html" />
     <Content Include="App\Pages\Home.html" />
+    <Content Include="App\Pages\Partner.html" />
     <Content Include="App\Pages\Partners.html" />
+    <Content Include="App\Pages\RemoveEmployee.html" />
+    <Content Include="App\Pages\RemovePartner.html" />
     <Content Include="App\Services\RequestService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="BusinessApplication.Context.tt">
