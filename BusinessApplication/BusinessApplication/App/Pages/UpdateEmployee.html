@@ -1,0 +1,58 @@
+﻿<div id="main">
+    <h2>Employee: <i>{{::employee.Name}}</i></h2>
+    <form novalidate ng-if="employee" class="simpleForm" name="updateEmployee" ng-submit="UpdateEmployee()">
+        <div class="formElement">
+            Name: <input type="text" name="name" ng-model="employee.Name" ng-pattern="/^[\w -]*$/" required /><br />
+            <span class="error" ng-show="updateEmployee.name.$error.required">Name is required.</span>
+            <span class="error" ng-show="updateEmployee.name.$error.pattern">Naughty, naughty. No special charachers allowed!</span>
+        </div>
+
+        <div class="formElement">
+            Position: <input type="text" name="position" ng-model="employee.Position" ng-pattern="/^[\w -]*$/" required /><br />
+            <span class="error" ng-show="updateEmployee.position.$error.required">Position is required.</span>
+            <span class="error" ng-show="updateEmployee.position.$error.pattern">Naughty, naughty. No special charachers allowed!</span>
+        </div>
+
+        <div class="checkbox">
+            <b>Supervisors:</b> <br />
+            <label ng-repeat="supervisor in employees">
+                {{supervisor.Name}}
+                <input type="checkbox"
+                       name="supervisorsCheckbox"
+                       value="{{supervisor.ID}}"
+                       ng-checked="Check(supervisor.ID, employee.Supervisor)" 
+                       ng-click="AddRemoveSupervisor(supervisor)" /><br />
+            </label>
+        </div>
+
+
+        <div class="checkbox">
+            <b>Subordinates:</b> <br />
+            <label ng-repeat="subordinate in employees">
+                {{subordinate.Name}}
+                <input type="checkbox"
+                       name="subordinatesCheckbox"
+                       value="{{subordinate.ID}}"
+                       ng-checked="Check(subordinate.ID, employee.Subordinates)" 
+                       ng-click="AddRemoveSubordinate(subordinate)" /><br />
+            </label>
+        </div>
+
+        <div class="checkbox">
+            <b>Partners:</b> <br />
+            <label ng-repeat="partner in partners">
+                {{partner.Name}}
+                <input type="checkbox"
+                       name="subordinatesCheckbox"
+                       value="{{partner.ID}}"
+                       ng-checked="Check(partner.ID, employee.Partners)" 
+                       ng-click="AddRemovePartnerFromEmployee(partner)" /><br />
+            </label>
+        </div>
+
+        <input type="submit" value="Update" ng-disabled="updateEmployee.name.$dirty && updateEmployee.name.$invalid || updateEmployee.position.$dirty && updateEmployee.position.$invalid">
+    </form>
+</div>
+
+<div id="side">
+</div>
