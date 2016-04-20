@@ -125,8 +125,7 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	    }
 
 	    $scope.UpdateEmployee = function () {
-	        console.log("Update Employee");
-	        console.log($scope.employee);
+	        RequestService.UpdateEmployee($scope.employee);
 	    }
 
 	    var GetEmployees = function () {
