@@ -1,0 +1,59 @@
+﻿<div id="main">
+    <h2>New Employee</i></h2>
+    <form novalidate class="simpleForm" name="addEmployee" ng-submit="AddEmployee()">
+        <div class="formElement">
+            Name: <input type="text" name="name" ng-model="newEmployee.Name" ng-pattern="/^[\w -]*$/" required /><br />
+            <span class="error" ng-show="addEmployee.name.$error.required && !addEmployee.name.$pristine">Name is required.</span>
+            <span class="error" ng-show="addEmployee.name.$error.pattern">Naughty, naughty. No special charachers allowed!</span>
+        </div>
+
+        <div class="formElement">
+            Position: <input type="text" name="position" ng-model="newEmployee.Position" ng-pattern="/^[\w -]*$/" required /><br />
+            <span class="error" ng-show="addEmployee.position.$error.required && !addEmployee.position.$pristine">Position is required.</span>
+            <span class="error" ng-show="addEmployee.position.$error.pattern">Naughty, naughty. No special charachers allowed!</span>
+        </div>
+
+        <div class="checkbox">
+            <b>Supervisors:</b> <br />
+            <label ng-repeat="supervisor in employees">
+                {{supervisor.Name}}
+                <input type="checkbox"
+                       name="supervisorsCheckbox"
+                       value="{{supervisor.ID}}"
+                       ng-click="AddToNew(supervisor, 'Supervisor')" /><br />
+            </label>
+        </div>
+
+
+        <div class="checkbox">
+            <b>Subordinates:</b> <br />
+            <label ng-repeat="subordinate in employees">
+                {{subordinate.Name}}
+                <input type="checkbox"
+                       name="subordinatesCheckbox"
+                       value="{{subordinate.ID}}"
+                       ng-click="AddToNew(subordinate, 'Subordinate')" /><br />
+            </label>
+        </div>
+
+        <div class="checkbox">
+            <b>Partners:</b> <br />
+            <label ng-repeat="partner in partners">
+                {{partner.Name}}
+                <input type="checkbox"
+                       name="subordinatesCheckbox"
+                       value="{{partner.ID}}"
+                       ng-click="AddToNew(partner, 'Partner')" /><br />
+            </label>
+        </div>
+
+        <div class="formElement">
+            <span class="error" ng-show="error">{{error}}</span>
+        </div>
+
+        <input type="submit" value="Create" ng-disabled="addEmployee.name.$dirty && addEmployee.name.$invalid || addEmployee.position.$dirty && addEmployee.position.$invalid">
+    </form>
+</div>
+
+<div id="side">
+</div>

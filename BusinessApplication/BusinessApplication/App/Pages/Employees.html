@@ -13,14 +13,14 @@
         <tr ng-repeat="employee in employees" ng-class-even="alternative">
             <td>{{employee.Name}}</td>
             <td>{{employee.Position}}</td>
-            <td class="option"><a ng-href="#/emloyee/view/{{employee.ID}}">View</a></td>
-            <td class="option"><a ng-href="#/emloyee/update/{{employee.ID}}">Update</a></td>
-            <td class="option"><a ng-href="#/emloyee/remove/{{employee.Name}}" ng-click="RemoveEmployee(employee.ID)">Delete</a></td>
+            <td class="option"><a ng-href="#/employee/view/{{employee.ID}}">View</a></td>
+            <td class="option"><a ng-href="#/employee/update/{{employee.ID}}">Update</a></td>
+            <td class="option"><a ng-href="#/employee/remove/{{employee.Name}}" ng-click="RemoveEmployee(employee.ID)">Delete</a></td>
         </tr>
     </table>
 
 </div>
 
 <div id="side">
-    <a href="#" class="button">Create Employee</a>
+    <a href="#/employee/add" class="button">Create Employee</a>
 </div>

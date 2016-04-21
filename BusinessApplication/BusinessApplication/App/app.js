@@ -25,25 +25,25 @@
             })
 
             // route for the adding of employees page
-            .when('/emloyee/add', {
+            .when('/employee/add', {
                 templateUrl: 'App/Pages/AddEmployee.html',
                 controller: 'AppController'
             })
 
             // route for the removing of employees page
-            .when('/emloyee/remove/:employeeName', {
+            .when('/employee/remove/:employeeName', {
                 templateUrl: 'App/Pages/RemoveEmployee.html',
                 controller: 'AppController'
             })
 
             // route for the updating of employees page
-            .when('/emloyee/update/:employeeID', {
+            .when('/employee/update/:employeeID', {
                 templateUrl: 'App/Pages/UpdateEmployee.html',
                 controller: 'AppController'
             })
 
             // route for successful employee update page
-            .when('/emloyee/updated/:employeeName', {
+            .when('/employee/updated/:employeeName', {
                 templateUrl: 'App/Pages/EmployeeUpdated.html',
                 controller: 'AppController'
             })

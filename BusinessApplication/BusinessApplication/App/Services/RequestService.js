@@ -32,7 +32,7 @@ app.factory('RequestService', function ($http, $location) {
 
     RequestService.UpdateEmployee = function (object) {
         return $http.post('http://localhost:60910/employees/update', object).then(function (response) {
-            return $location.path('/emloyee/updated/' + object.Name);
+            return $location.path('/employee/updated/' + object.Name);
         }, function (error) {
             console.log(error);
             return $location.path('/error');
