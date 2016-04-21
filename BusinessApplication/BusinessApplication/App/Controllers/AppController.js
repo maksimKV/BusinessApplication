@@ -72,6 +72,26 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	        return checked;
 	    };
 
+	    $scope.SelfCheck = function (referenceObject, Object, performSubordinatesCheck) {
+	        var result = true;
+
+	        // Check for itself
+	        if (referenceObject.ID == Object.ID) {
+	            result = false;
+	        }
+
+	        // Only for subordinates
+	        if (performSubordinatesCheck) {
+	            for (var i = 0; i < Object.Supervisor.length; i++) {
+	                if (referenceObject.ID == Object.Supervisor[i].ID) {
+	                    result = false;
+	                }
+	            }
+	        }
+
+	        return result;
+	    };
+
 	    $scope.AddRemoveSubordinate = function (Object) {
 	        for (var i = 0; i < $scope.employee.Subordinates.length; i++) {
 	            if ($scope.employee.Subordinates[i].ID == Object.ID) {

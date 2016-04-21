@@ -15,12 +15,12 @@
 
         <div class="checkbox">
             <b>Supervisors:</b> <br />
-            <label ng-repeat="supervisor in employees">
+            <label ng-repeat="supervisor in employees" ng-if = "SelfCheck(supervisor, employee, false)">
                 {{supervisor.Name}}
                 <input type="checkbox"
                        name="supervisorsCheckbox"
                        value="{{supervisor.ID}}"
-                       ng-checked="Check(supervisor.ID, employee.Supervisor)" 
+                       ng-checked="Check(supervisor.ID, employee.Supervisor)"
                        ng-click="AddRemoveSupervisor(supervisor)" /><br />
             </label>
         </div>
@@ -28,7 +28,7 @@
 
         <div class="checkbox">
             <b>Subordinates:</b> <br />
-            <label ng-repeat="subordinate in employees">
+            <label ng-repeat="subordinate in employees" ng-if="SelfCheck(subordinate, employee, true)">
                 {{subordinate.Name}}
                 <input type="checkbox"
                        name="subordinatesCheckbox"
