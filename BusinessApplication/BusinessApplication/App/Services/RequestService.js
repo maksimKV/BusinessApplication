@@ -75,6 +75,15 @@ app.factory('RequestService', function ($http, $location) {
         });
     }
 
+    RequestService.AddPartner = function (object) {
+        return $http.post('http://localhost:60910/partners/add', object).then(function (response) {
+            return $location.path('/partner/added/' + object.Name);
+        }, function (error) {
+            console.log(error);
+            return $location.path('/error');
+        });
+    }
+
     RequestService.RemovePartner = function (id) {
         return $http.get('http://localhost:60910/partners/remove/' + id).then(function (response) {
             return response.data;
