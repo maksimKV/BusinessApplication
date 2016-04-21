@@ -281,7 +281,9 @@
   <ItemGroup>
     <Content Include="App\app.js" />
     <Content Include="App\Controllers\AppController.js" />
+    <Content Include="App\Pages\AddEmployee.html" />
     <Content Include="App\Pages\Employee.html" />
+    <Content Include="App\Pages\EmployeeAdded.html" />
     <Content Include="App\Pages\Employees.html" />
     <Content Include="App\Pages\EmployeeUpdated.html" />
     <Content Include="App\Pages\Error.html" />

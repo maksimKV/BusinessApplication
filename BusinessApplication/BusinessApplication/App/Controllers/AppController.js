@@ -13,6 +13,17 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	    $scope.employeeName;
 	    $scope.partnerName;
 
+	    $scope.newEmployee = {
+	        Name: "",
+	        Position: "",
+	        Supervisor: new Array(),
+	        Subordinates: new Array(),
+            Partners: new Array()
+	    };
+	    $scope.newPartner = new Object();
+
+	    $scope.error = null;
+
 	    $scope.init = function () {
             // Adding the employees
 	        GetEmployees();
@@ -50,6 +61,16 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	    $scope.$on('$routeChangeSuccess', function () {
 	        GetEmployees();
 	        GetPartners();
+
+	        $scope.erorr = null;
+
+	        $scope.newEmployee = {
+	            Name: "",
+	            Position: "",
+	            Supervisor: new Array(),
+	            Subordinates: new Array(),
+	            Partners: new Array()
+	        };
 	    });
 
 	    $scope.RemoveEmployee = function (employeeID) {
@@ -140,12 +161,81 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	        $scope.partner.Partners.push(Object);
 	    }
 
+	    $scope.AddToNew = function (Object, Option) {
+	        if (Option == "Subordinate") {
+	            for (var i = 0; i < $scope.newEmployee.Subordinates.length; i++) {
+	                if ($scope.newEmployee.Subordinates[i].ID == Object.ID) {
+	                    $scope.newEmployee.Subordinates.splice(i, 1);
+
+	                    return;
+	                }
+	            }
+
+	            $scope.newEmployee.Subordinates.push(Object);
+	        }
+	        else if (Option == "Supervisor") {
+	            for (var i = 0; i < $scope.newEmployee.Supervisor.length; i++) {
+	                if ($scope.newEmployee.Supervisor[i].ID == Object.ID) {
+	                    $scope.newEmployee.Supervisor.splice(i, 1);
+
+	                    return;
+	                }
+	            }
+
+	            $scope.newEmployee.Supervisor.push(Object);
+	        }
+	        else if (Option == "Partner") {
+	            for (var i = 0; i < $scope.newEmployee.Partners.length; i++) {
+	                if ($scope.newEmployee.Partners[i].ID == Object.ID) {
+	                    $scope.newEmployee.Partners.splice(i, 1);
+
+	                    return;
+	                }
+	            }
+
+	            $scope.newEmployee.Partners.push(Object);
+	        }
+	        else if (Option == "Employee") {
+	            for (var i = 0; i < $scope.newPartner.Partners.length; i++) {
+	                if ($scope.newPartner.Partners[i].ID == Object.ID) {
+	                    $scope.newPartner.Partners.splice(i, 1);
+
+	                    return;
+	                }
+	            }
+
+	            $scope.newPartner.Partners.push(Object);
+	        }
+	    }
+
 	    $scope.UpdateEmployee = function () {
 	        RequestService.UpdateEmployee($scope.employee);
 	    }
 
 	    $scope.UpdatePartner = function () {
 	        RequestService.UpdatePartner($scope.partner);
+	    }
+
+	    $scope.AddEmployee = function () {
+	        var check = true;
+
+            // An employee cannot be a supervisor and a subordinate at the same time
+	        for(var i = 0; i < $scope.newEmployee.Supervisor.length; i++)
+	        {
+	            for (var n = 0; n < $scope.newEmployee.Subordinates.length; n++) {
+	                if ($scope.newEmployee.Supervisor[i].ID == $scope.newEmployee.Subordinates[n].ID) {
+	                    check = false;
+	                }
+	            }
+	        }
+
+	        if (check) {
+	            $scope.error = null;
+	            RequestService.AddEmployee($scope.newEmployee);
+	        }
+	        else {
+	            $scope.error = "A supervisor cannot be a subordinate at the same time";
+	        }
 	    }
 
 	    var GetEmployees = function () {

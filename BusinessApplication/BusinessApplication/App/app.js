@@ -19,7 +19,7 @@
             })
             
             // route for the single employee page
-            .when('/emloyee/view/:employeeID', {
+            .when('/employee/view/:employeeID', {
                 templateUrl: 'App/Pages/Employee.html',
                 controller: 'AppController'
             })
