@@ -48,6 +48,12 @@
                 controller: 'AppController'
             })
 
+            // route for successful employee added page
+            .when('/employee/added/:employeeName', {
+                templateUrl: 'App/Pages/EmployeeAdded.html',
+                controller: 'AppController'
+            })
+
             // route for the partners page
             .when('/partners', {
                 templateUrl: 'App/Pages/Partners.html',

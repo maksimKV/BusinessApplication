@@ -39,6 +39,15 @@ app.factory('RequestService', function ($http, $location) {
         });
     }
 
+    RequestService.AddEmployee = function (object) {
+        return $http.post('http://localhost:60910/employees/add', object).then(function (response) {
+            return $location.path('/employee/added/' + object.Name);
+        }, function (error) {
+            console.log(error);
+            return $location.path('/error');
+        });
+    }
+
     RequestService.AllPartners = function () {
         return $http.get('http://localhost:60910/partners').then(function (response) {
             return response.data;
