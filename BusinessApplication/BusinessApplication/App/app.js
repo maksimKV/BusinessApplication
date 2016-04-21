@@ -42,6 +42,12 @@
                 controller: 'AppController'
             })
 
+            // route for successful employee update page
+            .when('/emloyee/updated/:employeeName', {
+                templateUrl: 'App/Pages/EmployeeUpdated.html',
+                controller: 'AppController'
+            })
+
             // route for the partners page
             .when('/partners', {
                 templateUrl: 'App/Pages/Partners.html',
