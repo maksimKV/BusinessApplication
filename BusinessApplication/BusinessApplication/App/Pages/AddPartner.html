@@ -1,0 +1,44 @@
+﻿<div id="main">
+    <h2>New Partner</h2>
+    <form novalidate class="simpleForm" name="addPartner" ng-submit="AddPartner()">
+        <div class="formElement">
+            Name: <input type="text" name="name" ng-model="newPartner.Name" ng-pattern="/^[\w -]*$/" required /><br />
+            <span class="error" ng-show="addPartner.name.$error.required && !addPartner.name.$pristine">Name is required.</span>
+            <span class="error" ng-show="addPartner.name.$error.pattern">Naughty, naughty. No special charachers allowed!</span>
+        </div>
+
+        <div class="formElement">
+            Email: <input type="text" name="email" ng-model="newPartner.Email" ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" required /><br />
+            <span class="error" ng-show="addPartner.email.$error.required && !addPartner.email.$pristine">Email is required.</span>
+            <span class="error" ng-show="addPartner.email.$error.pattern">Not a valid email address!</span>
+        </div>
+
+        <div class="formElement">
+            Phone: <input type="text" name="phone" ng-model="newPartner.Phone" ng-pattern="/^[\s()+-]*([0-9][\s()+-]*){6,20}$/" required /><br />
+            <span class="error" ng-show="addPartner.phone.$error.required && !addPartner.phone.$pristine">Phone is required.</span>
+            <span class="error" ng-show="addPartner.phone.$error.pattern">Not a valid phone number!</span>
+        </div>
+
+        <div class="checkbox">
+            <b>Partners:</b> <br />
+            <label ng-repeat="employee in employees">
+                {{employee.Name}}
+                <input type="checkbox"
+                       name="partnersCheckbox"
+                       value="{{employee.ID}}"
+                       ng-click="AddToNew(employee, 'Employee')" /><br />
+            </label>
+        </div>
+
+        <div class="formElement">
+            <span class="error" ng-show="error">{{error}}</span>
+        </div>
+
+        <div class="formButtons">
+            <input type="submit" value="Create" ng-disabled="addPartner.email.$dirty && addPartner.email.$invalid || addPartner.name.$dirty && addPartner.name.$invalid || addPartner.phone.$dirty && addPartner.phone.$invalid">
+        </div>
+    </form>
+</div>
+
+<div id="side">
+</div>
