@@ -21,8 +21,8 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	        GetPartners();
 	    }
 
-	    $scope.$watch('employee', function () {
-	        console.log($scope.employee);
+	    $scope.$watch('partner', function () {
+	        console.log($scope.partner);
 	    });
 
 	    $scope.$watch('routeParams', function () {
@@ -58,10 +58,6 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 
 	    $scope.RemovePartner = function (partnerID) {
 	        RequestService.RemovePartner(partnerID);
-	    };
-
-	    $scope.UpdateEmployee = function () {
-
 	    };
 
 	    $scope.Check = function (ID, Relationships) {
@@ -126,6 +122,10 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 
 	    $scope.UpdateEmployee = function () {
 	        RequestService.UpdateEmployee($scope.employee);
+	    }
+
+	    $scope.UpdatePartner = function () {
+	        RequestService.UpdatePartner($scope.partner);
 	    }
 
 	    var GetEmployees = function () {
