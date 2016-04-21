@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Newtonsoft.Json.Linq;
 
 namespace BusinessApplication.Controllers
 {
@@ -74,6 +75,43 @@ namespace BusinessApplication.Controllers
                 context.Partners.Remove(partner);
                 context.SaveChanges();
 
+                return Ok();
+            }
+        }
+
+        [Route("partners/update")]
+        [HttpPost]
+        public IHttpActionResult UpdateEmployee(JObject partner)
+        {
+            int partnerID = Convert.ToInt32(partner["ID"].ToString());
+            string partnerName = partner["Name"].ToString();
+            string partnerEmail = partner["Email"].ToString();
+            string partnerPhone = partner["Phone"].ToString();
+
+            JArray employees = partner["Partners"] as JArray;
+
+            using (var context = new BusinessDBEntities())
+            {
+                Partner partnerToUpdate = context.Partners.Find(partnerID);
+                partnerToUpdate.Name = partnerName;
+                partnerToUpdate.Email = partnerEmail;
+                partnerToUpdate.Phone = partnerPhone;
+
+                // Removing partner dependencies
+                context.Connections.RemoveRange(context.Connections.Where(x => x.PartnerID == partnerID));
+
+                // Adding new partner dependencies
+                foreach (JObject employee in employees)
+                {
+                    context.Connections.Add(
+                        new Connection
+                        {
+                            EmployeeID = Convert.ToInt32(employee["ID"].ToString()),
+                            PartnerID = partnerID
+                        });
+                }
+
+                context.SaveChanges();
                 return Ok();
             }
         }
