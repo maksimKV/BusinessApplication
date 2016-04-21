@@ -78,6 +78,12 @@
                 controller: 'AppController'
             })
 
+            // route for successful partner update page
+            .when('/partner/updated/:partnerName', {
+                templateUrl: 'App/Pages/PartnerUpdated.html',
+                controller: 'AppController'
+            })
+
             // route for errors page
             .when('/error', {
                 templateUrl: 'App/Pages/Error.html',
