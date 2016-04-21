@@ -88,6 +88,22 @@ namespace BusinessApplication.Controllers
             }
         }
 
+        [Route("employees/remove/dependencies/{supervisorID}/{subordinateID}")]
+        [HttpGet]
+        public IHttpActionResult RemoveDependencies(int supervisorID, int subordinateID)
+        {
+            using (var context = new BusinessDBEntities())
+            {
+                Supervisor dependency = context.Supervisors
+                    .Where(x => x.SupervisorID == supervisorID && x.EmployeeID == subordinateID).FirstOrDefault();
+
+                context.Supervisors.Remove(dependency);
+                context.SaveChanges();
+
+                return Ok();
+            }
+        }
+
         [Route("employees/update")]
         [HttpPost]
         public IHttpActionResult UpdateEmployee(JObject employee)
