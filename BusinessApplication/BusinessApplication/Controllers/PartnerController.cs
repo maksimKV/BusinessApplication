@@ -79,6 +79,22 @@ namespace BusinessApplication.Controllers
             }
         }
 
+        [Route("partners/remove/dependencies/{partnerID}/{employeeID}")]
+        [HttpGet]
+        public IHttpActionResult RemoveDependencies(int partnerID, int employeeID)
+        {
+            using (var context = new BusinessDBEntities())
+            {
+                Connection connection = context.Connections
+                    .Where(x => x.PartnerID == partnerID && x.EmployeeID == employeeID).FirstOrDefault();
+                
+                context.Connections.Remove(connection);
+                context.SaveChanges();
+
+                return Ok();
+            }
+        }
+
         [Route("partners/update")]
         [HttpPost]
         public IHttpActionResult UpdatePartner(JObject partner)
