@@ -103,21 +103,28 @@
   margin-bottom: 20px;
 }
 /* line 119, scss/styles.scss */
+#main form .formButtons, #side form .formButtons {
+  position: relative;
+  display: block;
+  width: 100%;
+  float: left;
+}
+/* line 127, scss/styles.scss */
 #main form input[type=text], #side form input[type=text] {
   margin-left: 5px;
   box-sizing: border-box;
   padding: 5px;
 }
-/* line 125, scss/styles.scss */
+/* line 133, scss/styles.scss */
 #main form input[type=checkbox], #side form input[type=checkbox] {
   float: right;
   margin-right: 140px;
 }
-/* line 130, scss/styles.scss */
+/* line 138, scss/styles.scss */
 #main form .error, #side form .error {
   color: #FF0000;
 }
-/* line 134, scss/styles.scss */
+/* line 142, scss/styles.scss */
 #main form input[type=submit], #side form input[type=submit] {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0000), color-stop(100%, #f31414));
   background-image: -webkit-linear-gradient(top, #ff0000, #f31414);
@@ -132,7 +139,7 @@
   padding: 5px 20px;
   margin-bottom: 20px;
 }
-/* line 147, scss/styles.scss */
+/* line 155, scss/styles.scss */
 #main form input[type=submit]:hover, #side form input[type=submit]:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f31414), color-stop(100%, #ff0000));
   background-image: -webkit-linear-gradient(top, #f31414, #ff0000);
@@ -141,7 +148,7 @@
   background-image: linear-gradient(top, #f31414, #ff0000);
 }
 
-/* line 154, scss/styles.scss */
+/* line 162, scss/styles.scss */
 #side {
   width: 300px;
 }

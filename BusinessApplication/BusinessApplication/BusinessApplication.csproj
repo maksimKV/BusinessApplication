@@ -291,6 +291,7 @@
     <Content Include="App\Pages\RemoveEmployee.html" />
     <Content Include="App\Pages\RemovePartner.html" />
     <Content Include="App\Pages\UpdateEmployee.html" />
+    <Content Include="App\Pages\UpdatePartner.html" />
     <Content Include="App\Services\RequestService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="BusinessApplication.Context.tt">
