@@ -90,6 +90,12 @@
                 controller: 'AppController'
             })
 
+            // route for successful partner added page
+            .when('/partner/added/:partnerName', {
+                templateUrl: 'App/Pages/PartnerAdded.html',
+                controller: 'AppController'
+            })
+
             // route for errors page
             .when('/error', {
                 templateUrl: 'App/Pages/Error.html',
