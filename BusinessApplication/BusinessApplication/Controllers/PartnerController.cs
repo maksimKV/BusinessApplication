@@ -81,14 +81,12 @@ namespace BusinessApplication.Controllers
 
         [Route("partners/update")]
         [HttpPost]
-        public IHttpActionResult UpdateEmployee(JObject partner)
+        public IHttpActionResult UpdatePartner(JObject partner)
         {
             int partnerID = Convert.ToInt32(partner["ID"].ToString());
             string partnerName = partner["Name"].ToString();
             string partnerEmail = partner["Email"].ToString();
             string partnerPhone = partner["Phone"].ToString();
-
-            JArray employees = partner["Partners"] as JArray;
 
             using (var context = new BusinessDBEntities())
             {
@@ -99,19 +97,32 @@ namespace BusinessApplication.Controllers
 
                 // Removing partner dependencies
                 context.Connections.RemoveRange(context.Connections.Where(x => x.PartnerID == partnerID));
-
-                // Adding new partner dependencies
-                foreach (JObject employee in employees)
-                {
-                    context.Connections.Add(
-                        new Connection
-                        {
-                            EmployeeID = Convert.ToInt32(employee["ID"].ToString()),
-                            PartnerID = partnerID
-                        });
-                }
-
                 context.SaveChanges();
+
+                AddPartnerDependencies(partner, partnerID);
+
+                return Ok();
+            }
+        }
+
+        [Route("partners/add")]
+        [HttpPost]
+        public IHttpActionResult AddPartner(JObject partner)
+        {
+            Partner newPartner = new Partner {
+                Name = partner["Name"].ToString(),
+                Email = partner["Email"].ToString(),
+                Phone = partner["Phone"].ToString()
+            };
+
+            using (var context = new BusinessDBEntities())
+            {
+                context.Partners.Add(newPartner);
+                context.SaveChanges();
+
+                AddPartnerDependencies(partner, newPartner.ID);
+                context.SaveChanges();
+
                 return Ok();
             }
         }
@@ -145,6 +156,26 @@ namespace BusinessApplication.Controllers
                 };
 
                 connections.Add(employee);
+            }
+        }
+
+        private static void AddPartnerDependencies(JObject partner, int partnerID)
+        {
+            using (var context = new BusinessDBEntities())
+            {
+                JArray employees = partner["Partners"] as JArray;
+
+                foreach (JObject employee in employees)
+                {
+                    context.Connections.Add(
+                        new Connection
+                        {
+                            EmployeeID = Convert.ToInt32(employee["ID"].ToString()),
+                            PartnerID = partnerID
+                        });
+                }
+
+                context.SaveChanges();
             }
         }
 

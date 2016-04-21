@@ -282,6 +282,7 @@
     <Content Include="App\app.js" />
     <Content Include="App\Controllers\AppController.js" />
     <Content Include="App\Pages\AddEmployee.html" />
+    <Content Include="App\Pages\AddPartner.html" />
     <Content Include="App\Pages\Employee.html" />
     <Content Include="App\Pages\EmployeeAdded.html" />
     <Content Include="App\Pages\Employees.html" />
@@ -289,6 +290,7 @@
     <Content Include="App\Pages\Error.html" />
     <Content Include="App\Pages\Home.html" />
     <Content Include="App\Pages\Partner.html" />
+    <Content Include="App\Pages\PartnerAdded.html" />
     <Content Include="App\Pages\Partners.html" />
     <Content Include="App\Pages\PartnerUpdated.html" />
     <Content Include="App\Pages\RemoveEmployee.html" />
