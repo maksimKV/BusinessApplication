@@ -96,10 +96,6 @@ namespace BusinessApplication.Controllers
             string employeeName = employee["Name"].ToString();
             string employeePosition = employee["Position"].ToString();
 
-            JArray subordinates = employee["Subordinates"] as JArray;
-            JArray supervisors = employee["Supervisor"] as JArray;
-            JArray partners = employee["Partners"] as JArray;
-
             using (var context = new BusinessDBEntities())
             {
                 Employee employeeToUpdate = context.Employees.Find(employeeID);
@@ -111,41 +107,30 @@ namespace BusinessApplication.Controllers
                 context.Supervisors.RemoveRange(context.Supervisors.Where(x => x.EmployeeID == employeeID));
                 context.Connections.RemoveRange(context.Connections.Where(x => x.EmployeeID == employeeID));
 
-                // Adding new employee dependencies
-                foreach (JObject supervisor in supervisors)
-                {
-                    context.Supervisors.Add(
-                        new Supervisor {
-                            SupervisorID = Convert.ToInt32(supervisor["ID"].ToString()),
-                            EmployeeID = employeeID
-                        });
-                }
-
-                // Adding new employee dependencies
-                foreach (JObject subordinate in subordinates)
-                {
-                    context.Supervisors.Add(
-                        new Supervisor
-                        {
-                            SupervisorID = employeeID,
-                            EmployeeID = Convert.ToInt32(subordinate["ID"].ToString())
-                        });
-                }
-
-                // Adding new employee dependencies
-                foreach (JObject partner in partners)
-                {
-                    context.Connections.Add(
-                        new Connection
-                        {
-                            EmployeeID = employeeID,
-                            PartnerID = Convert.ToInt32(partner["ID"].ToString())
-                        });
-                }
-
                 context.SaveChanges();
+                AddEmployeeDependencies(employee, employeeID);
+
                 return Ok();
             }
+        }
+
+        [Route("employees/add")]
+        [HttpPost]
+        public IHttpActionResult AddEmployee(JObject employee)
+        {
+            Employee employeeToAdd = new Employee {
+                Name = employee["Name"].ToString(),
+                Position = employee["Position"].ToString(),
+            };
+            using (var context = new BusinessDBEntities())
+            {
+                context.Employees.Add(employeeToAdd);
+                context.SaveChanges();
+
+                AddEmployeeDependencies(employee, employeeToAdd.ID);
+                return Ok();
+            }
+            
         }
 
         private static void GetEmployeeDependencies(Employee value, List<object> connections, List<object> supervisors, List<object> employees)
@@ -194,6 +179,49 @@ namespace BusinessApplication.Controllers
 
                     employees.Add(assistant);
                 }
+            }
+        }
+
+        private static void AddEmployeeDependencies(JObject employee, int employeeID)
+        {
+            JArray subordinates = employee["Subordinates"] as JArray;
+            JArray supervisors = employee["Supervisor"] as JArray;
+            JArray partners = employee["Partners"] as JArray;
+
+            using (var context = new BusinessDBEntities())
+            {
+
+                foreach (JObject supervisor in supervisors)
+                {
+                    context.Supervisors.Add(
+                        new Supervisor
+                        {
+                            SupervisorID = Convert.ToInt32(supervisor["ID"].ToString()),
+                            EmployeeID = employeeID
+                        });
+                }
+
+                foreach (JObject subordinate in subordinates)
+                {
+                    context.Supervisors.Add(
+                        new Supervisor
+                        {
+                            SupervisorID = employeeID,
+                            EmployeeID = Convert.ToInt32(subordinate["ID"].ToString())
+                        });
+                }
+
+                foreach (JObject partner in partners)
+                {
+                    context.Connections.Add(
+                        new Connection
+                        {
+                            EmployeeID = employeeID,
+                            PartnerID = Convert.ToInt32(partner["ID"].ToString())
+                        });
+                }
+
+                context.SaveChanges();
             }
         }
     }
