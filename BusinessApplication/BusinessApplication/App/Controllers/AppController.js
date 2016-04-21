@@ -20,7 +20,13 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	        Subordinates: new Array(),
             Partners: new Array()
 	    };
-	    $scope.newPartner = new Object();
+
+	    $scope.newPartner = {
+	        Name: "",
+	        Email: "",
+	        Phone: "",
+            Partners: new Array()
+	    };
 
 	    $scope.error = null;
 
@@ -69,6 +75,13 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	            Position: "",
 	            Supervisor: new Array(),
 	            Subordinates: new Array(),
+	            Partners: new Array()
+	        };
+
+	        $scope.newPartner = {
+	            Name: "",
+	            Email: "",
+	            Phone: "",
 	            Partners: new Array()
 	        };
 	    });
@@ -236,6 +249,10 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	        else {
 	            $scope.error = "A supervisor cannot be a subordinate at the same time";
 	        }
+	    }
+
+	    $scope.AddPartner = function () {
+	        RequestService.AddPartner($scope.newPartner);
 	    }
 
 	    var GetEmployees = function () {
