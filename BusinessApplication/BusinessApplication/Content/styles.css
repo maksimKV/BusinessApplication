@@ -152,3 +152,19 @@
 #side {
   width: 300px;
 }
+/* line 166, scss/styles.scss */
+#side .button {
+  margin: 20px 5px 0px 30px;
+  text-align: center;
+  background-color: red;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  border-radius: 6px;
+  padding: 6px 0px;
+  font-size: 19px;
+}
+/* line 181, scss/styles.scss */
+#side .button:hover {
+  background-color: #f31414;
+}
