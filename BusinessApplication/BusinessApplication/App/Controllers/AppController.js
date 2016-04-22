@@ -30,6 +30,9 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 
 	    $scope.error = null;
 
+	    $scope.supervisorName;
+	    $scope.subordinateName;
+
 	    $scope.init = function () {
             // Adding the employees
 	        GetEmployees();
@@ -58,9 +61,18 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 
 	        if (typeof $routeParams.employeeName !== 'undefined') {
 	            $scope.employeeName = $routeParams.employeeName;
-	        } 
-	        else if (typeof $routeParams.partnerName !== 'undefined') {
+	        }
+
+	        if (typeof $routeParams.partnerName !== 'undefined') {
 	            $scope.partnerName = $routeParams.partnerName;
+	        }
+
+	        if (typeof $routeParams.supervisorName !== 'undefined') {
+	            $scope.supervisorName = $routeParams.supervisorName;
+	        }
+
+	        if (typeof $routeParams.subordinateName !== 'undefined') {
+	            $scope.subordinateName = $routeParams.subordinateName;
 	        }
 	    });
 
@@ -254,6 +266,10 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	    $scope.AddPartner = function () {
 	        RequestService.AddPartner($scope.newPartner);
 	    }
+
+	    $scope.RemoveManagement = function (supervisorID, subordinateID) {
+	        RequestService.RemoveManagement(supervisorID, subordinateID);
+	    };
 
 	    var GetEmployees = function () {
 	        RequestService.AllEmployees().then(function (data) {

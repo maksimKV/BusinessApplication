@@ -289,6 +289,7 @@
     <Content Include="App\Pages\EmployeeUpdated.html" />
     <Content Include="App\Pages\Error.html" />
     <Content Include="App\Pages\Home.html" />
+    <Content Include="App\Pages\MangementRemoved.html" />
     <Content Include="App\Pages\Partner.html" />
     <Content Include="App\Pages\PartnerAdded.html" />
     <Content Include="App\Pages\Partners.html" />

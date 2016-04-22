@@ -22,7 +22,7 @@
         <tr ng-repeat="supervisor in employee.Supervisor">
             <td>{{supervisor.Name}}</td>
             <td>{{supervisor.Position}}</td>
-            <td><a ng-href="#/employees/remove/manager/{{supervisor.ID}}">Remove</a></td>
+            <td><a ng-href="#/employee/removed/management/{{supervisor.Name}}/{{employee.Name}}" ng-click="RemoveManagement(supervisor.ID, employee.ID)">Remove</a></td>
         </tr>
     </table>
 
@@ -36,7 +36,7 @@
         <tr ng-repeat="subordinate in employee.Subordinates">
             <td>{{subordinate.Name}}</td>
             <td>{{subordinate.Position}}</td>
-            <td><a ng-href="#/employees/remove/manager/{{subordinate.ID}}">Remove</a></td>
+            <td><a ng-href="#/employee/removed/management/{{employee.Name}}/{{subordinate.Name}}" ng-click="RemoveManagement(employee.ID, subordinate.ID)">Remove</a></td>
         </tr>
     </table>
 
