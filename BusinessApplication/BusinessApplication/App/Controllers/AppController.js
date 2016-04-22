@@ -271,6 +271,10 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	        RequestService.RemoveManagement(supervisorID, subordinateID);
 	    };
 
+	    $scope.RemovePartnership = function (partnerID, employeeID) {
+	        RequestService.RemovePartnership(partnerID, employeeID);
+	    };
+
 	    var GetEmployees = function () {
 	        RequestService.AllEmployees().then(function (data) {
 	            $scope.employees = data;

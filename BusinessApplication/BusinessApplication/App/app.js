@@ -54,6 +54,12 @@
                 controller: 'AppController'
             })
 
+             // route for successful management removal page
+            .when('/employee/removed/management/:supervisorName/:subordinateName', {
+                templateUrl: 'App/Pages/MangementRemoved.html',
+                controller: 'AppController'
+            })
+
             // route for the partners page
             .when('/partners', {
                 templateUrl: 'App/Pages/Partners.html',
@@ -93,6 +99,12 @@
             // route for successful partner added page
             .when('/partner/added/:partnerName', {
                 templateUrl: 'App/Pages/PartnerAdded.html',
+                controller: 'AppController'
+            })
+
+            // route for successful partnership removal page
+            .when('/partner/partnership/removed/:partnerName/:employeeName', {
+                templateUrl: 'App/Pages/PartnershipRemoved.html',
                 controller: 'AppController'
             })
 

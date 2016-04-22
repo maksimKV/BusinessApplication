@@ -52,7 +52,7 @@
             <td class="innerPadding">{{partner.Name}}</td>
             <td class="innerPadding">{{partner.Phone}}</td>
             <td class="innerPadding">{{partner.Email}}</td>
-            <td class="innerPadding"><a ng-href="#/employees/remove/partnership/{{partner.ID}}">Remove</a></td>
+            <td class="innerPadding"><a ng-href="#/partner/partnership/removed/{{partner.Name}}/{{employee.Name}}" ng-click="RemovePartnership(partner.ID, employee.ID)">Remove</a></td>
         </tr>
     </table>
 </div>

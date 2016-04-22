@@ -34,7 +34,7 @@
             </td>
             <td ng-if="employee.Supervisors.length == 0">None</td>
 
-            <td><a ng-href="#/partner/remove/employee/{{employee.ID}}">Remove</a></td>
+            <td><a ng-href="#/partner/partnership/removed/{{partner.Name}}/{{employee.Name}}" ng-click="RemovePartnership(partner.ID, employee.ID)">Remove</a></td>
         </tr>
     </table>
 

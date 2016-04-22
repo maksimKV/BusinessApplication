@@ -293,6 +293,7 @@
     <Content Include="App\Pages\Partner.html" />
     <Content Include="App\Pages\PartnerAdded.html" />
     <Content Include="App\Pages\Partners.html" />
+    <Content Include="App\Pages\PartnershipRemoved.html" />
     <Content Include="App\Pages\PartnerUpdated.html" />
     <Content Include="App\Pages\RemoveEmployee.html" />
     <Content Include="App\Pages\RemovePartner.html" />

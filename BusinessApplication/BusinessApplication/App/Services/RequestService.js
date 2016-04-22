@@ -102,5 +102,14 @@ app.factory('RequestService', function ($http, $location) {
         });
     }
 
+    RequestService.RemovePartnership = function (partnerID, employeeID) {
+        return $http.get('http://localhost:60910/partners/remove/dependencies/' + partnerID + '/' + employeeID).then(function (response) {
+            return response.data;
+        }, function (error) {
+            console.log(error);
+            return $location.path('/error');
+        });
+    }
+
     return RequestService;
 });
