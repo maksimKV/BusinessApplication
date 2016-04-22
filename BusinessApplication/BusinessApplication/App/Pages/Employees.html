@@ -10,7 +10,7 @@
             <th>Delete</th>
         </tr>
 
-        <tr ng-repeat="employee in employees" ng-class-even="alternative">
+        <tr ng-repeat="employee in employees" ng-class-even="'alternativeBlue'" ng-class-odd="'blue'">
             <td>{{employee.Name}}</td>
             <td>{{employee.Position}}</td>
             <td class="option"><a ng-href="#/employee/view/{{employee.ID}}">View</a></td>

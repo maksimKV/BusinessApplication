@@ -1,7 +1,7 @@
 ﻿<div id="main">
     <h2>All Partners</h2>
 
-    <table class="singlePartner">
+    <table>
         <tr>
             <th>Name</th>
             <th>Email</th>
@@ -11,7 +11,7 @@
             <th>Delete</th>
         </tr>
 
-        <tr ng-repeat="partner in partners" ng-class-even="alternative">
+        <tr ng-repeat="partner in partners" ng-class-even="'alternativeBlue'" ng-class-odd="'blue'">
             <td>{{partner.Name}}</td>
             <td>{{partner.Email}}</td>
             <td>{{partner.Phone}}</td>

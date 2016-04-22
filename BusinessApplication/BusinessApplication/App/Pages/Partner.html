@@ -7,7 +7,7 @@
             <th>Phone</th>
         </tr>
 
-        <tr>
+        <tr class="blue">
             <td>{{partner.Name}}</td>
             <td>{{partner.Email}}</td>
             <td>{{partner.Phone}}</td>
@@ -22,7 +22,7 @@
             <th>Partner's Supervisors</th>
             <th>Remove Partner</th>
         </tr>
-        <tr ng-repeat="employee in partner.Partners">
+        <tr ng-repeat="employee in partner.Partners" ng-class-even="'alternativeBlue'" ng-class-odd="'blue'">
             <td>{{employee.Name}}</td>
             <td>{{employee.Position}}</td>
 

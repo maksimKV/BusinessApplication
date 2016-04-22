@@ -70,8 +70,20 @@ $lighter-red: #F31414;
 		margin-bottom: 60px;
 
 		th {
-			background-color: #a8a8a8;
+			background-color: #7997a1;
 			padding: 5px 20px;
+		}
+
+		.alternativeBlue {
+				td {
+					background-color: #CDE7F0;
+				}
+			}
+
+		.blue {
+			td {
+				background-color: #ADD8E6;
+			}
 		}
 
 		td {
@@ -84,17 +96,13 @@ $lighter-red: #F31414;
 				list-style-type: none;
 			}
 
-			&.alternative {
-				background-color: #d3d3d3;
-			}
-
 			a {
-				color: $red;
+				color: #ff3232;
 				text-decoration: none;
 				font-weight: bold;
 
 				&:hover {
-					color: #ff4c4c;
+					color: #ff0000;
 				}
 			}
 		}

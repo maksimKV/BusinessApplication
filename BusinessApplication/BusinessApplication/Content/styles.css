@@ -62,35 +62,39 @@
 }
 /* line 72, scss/styles.scss */
 #main table th, #side table th {
-  background-color: #a8a8a8;
+  background-color: #7997a1;
   padding: 5px 20px;
 }
-/* line 77, scss/styles.scss */
+/* line 78, scss/styles.scss */
+#main table .alternativeBlue td, #side table .alternativeBlue td {
+  background-color: #CDE7F0;
+}
+/* line 84, scss/styles.scss */
+#main table .blue td, #side table .blue td {
+  background-color: #ADD8E6;
+}
+/* line 89, scss/styles.scss */
 #main table td, #side table td {
   background-color: #fff;
   padding: 5px 10px;
   text-align: center;
 }
-/* line 82, scss/styles.scss */
+/* line 94, scss/styles.scss */
 #main table td ul, #side table td ul {
   text-align: left;
   list-style-type: none;
 }
-/* line 87, scss/styles.scss */
-#main table td.alternative, #side table td.alternative {
-  background-color: #d3d3d3;
-}
-/* line 91, scss/styles.scss */
+/* line 99, scss/styles.scss */
 #main table td a, #side table td a {
-  color: red;
+  color: #ff3232;
   text-decoration: none;
   font-weight: bold;
 }
-/* line 96, scss/styles.scss */
+/* line 104, scss/styles.scss */
 #main table td a:hover, #side table td a:hover {
-  color: #ff4c4c;
+  color: #ff0000;
 }
-/* line 103, scss/styles.scss */
+/* line 111, scss/styles.scss */
 #main .checkbox, #side .checkbox {
   display: block;
   position: relative;
@@ -98,33 +102,33 @@
   width: 300px;
   margin-bottom: 40px;
 }
-/* line 115, scss/styles.scss */
+/* line 123, scss/styles.scss */
 #main form .formElement, #side form .formElement {
   margin-bottom: 20px;
 }
-/* line 119, scss/styles.scss */
+/* line 127, scss/styles.scss */
 #main form .formButtons, #side form .formButtons {
   position: relative;
   display: block;
   width: 100%;
   float: left;
 }
-/* line 127, scss/styles.scss */
+/* line 135, scss/styles.scss */
 #main form input[type=text], #side form input[type=text] {
   margin-left: 5px;
   box-sizing: border-box;
   padding: 5px;
 }
-/* line 133, scss/styles.scss */
+/* line 141, scss/styles.scss */
 #main form input[type=checkbox], #side form input[type=checkbox] {
   float: right;
   margin-right: 140px;
 }
-/* line 138, scss/styles.scss */
+/* line 146, scss/styles.scss */
 #main form .error, #side form .error {
   color: #FF0000;
 }
-/* line 142, scss/styles.scss */
+/* line 150, scss/styles.scss */
 #main form input[type=submit], #side form input[type=submit] {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0000), color-stop(100%, #f31414));
   background-image: -webkit-linear-gradient(top, #ff0000, #f31414);
@@ -139,7 +143,7 @@
   padding: 5px 20px;
   margin-bottom: 20px;
 }
-/* line 155, scss/styles.scss */
+/* line 163, scss/styles.scss */
 #main form input[type=submit]:hover, #side form input[type=submit]:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f31414), color-stop(100%, #ff0000));
   background-image: -webkit-linear-gradient(top, #f31414, #ff0000);
@@ -148,11 +152,11 @@
   background-image: linear-gradient(top, #f31414, #ff0000);
 }
 
-/* line 162, scss/styles.scss */
+/* line 170, scss/styles.scss */
 #side {
   width: 300px;
 }
-/* line 166, scss/styles.scss */
+/* line 174, scss/styles.scss */
 #side .button {
   margin: 20px 5px 0px 30px;
   text-align: center;
@@ -164,7 +168,7 @@
   padding: 6px 0px;
   font-size: 19px;
 }
-/* line 181, scss/styles.scss */
+/* line 189, scss/styles.scss */
 #side .button:hover {
   background-color: #f31414;
 }

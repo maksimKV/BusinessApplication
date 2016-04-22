@@ -6,7 +6,7 @@
             <th>Position</th>
         </tr>
 
-        <tr>
+        <tr class="blue">
             <td>{{employee.Name}}</td>
             <td>{{employee.Position}}</td>
         </tr>
@@ -19,7 +19,7 @@
             <th>Supervisor's Position</th>
             <th>Remove Supervisor</th>
         </tr>
-        <tr ng-repeat="supervisor in employee.Supervisor">
+        <tr ng-repeat="supervisor in employee.Supervisor" ng-class-even="'alternativeBlue'" ng-class-odd="'blue'">
             <td>{{supervisor.Name}}</td>
             <td>{{supervisor.Position}}</td>
             <td><a ng-href="#/employee/removed/management/{{supervisor.Name}}/{{employee.Name}}" ng-click="RemoveManagement(supervisor.ID, employee.ID)">Remove</a></td>
@@ -33,7 +33,7 @@
             <th>Subordinate's Position</th>
             <th>Remove Subordinate</th>
         </tr>
-        <tr ng-repeat="subordinate in employee.Subordinates">
+        <tr ng-repeat="subordinate in employee.Subordinates" ng-class-even="'alternativeBlue'" ng-class-odd="'blue'">
             <td>{{subordinate.Name}}</td>
             <td>{{subordinate.Position}}</td>
             <td><a ng-href="#/employee/removed/management/{{employee.Name}}/{{subordinate.Name}}" ng-click="RemoveManagement(employee.ID, subordinate.ID)">Remove</a></td>
@@ -48,7 +48,7 @@
             <th>Partner's Email</th>
             <th>Remove Partner</th>
         </tr>
-        <tr ng-repeat="partner in employee.Partners">
+        <tr ng-repeat="partner in employee.Partners" ng-class-even="'alternativeBlue'" ng-class-odd="'blue'">
             <td class="innerPadding">{{partner.Name}}</td>
             <td class="innerPadding">{{partner.Phone}}</td>
             <td class="innerPadding">{{partner.Email}}</td>
