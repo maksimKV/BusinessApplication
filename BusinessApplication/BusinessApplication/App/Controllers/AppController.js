@@ -41,10 +41,6 @@ app.controller('AppController', ['$scope', '$log', '$routeParams', '$location', 
 	        GetPartners();
 	    }
 
-	    $scope.$watch('partner', function () {
-	        console.log($scope.partner);
-	    });
-
 	    $scope.$watch('routeParams', function () {
 	        if(typeof $routeParams.employeeID !== 'undefined')
 	        {
