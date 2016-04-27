@@ -147,6 +147,11 @@ $lighter-red: #F31414;
 			color: #FF0000;
 		}
 
+		label {
+			margin: 2px 0px;
+			display: block;
+		}
+
 		input[type=submit] {
 			@include background-image(linear-gradient(top, $red, $lighter-red));
 			cursor: pointer;

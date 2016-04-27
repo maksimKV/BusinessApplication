@@ -129,6 +129,11 @@
   color: #FF0000;
 }
 /* line 150, scss/styles.scss */
+#main form label, #side form label {
+  margin: 2px 0px;
+  display: block;
+}
+/* line 155, scss/styles.scss */
 #main form input[type=submit], #side form input[type=submit] {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ff0000), color-stop(100%, #f31414));
   background-image: -webkit-linear-gradient(top, #ff0000, #f31414);
@@ -143,7 +148,7 @@
   padding: 5px 20px;
   margin-bottom: 20px;
 }
-/* line 163, scss/styles.scss */
+/* line 168, scss/styles.scss */
 #main form input[type=submit]:hover, #side form input[type=submit]:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f31414), color-stop(100%, #ff0000));
   background-image: -webkit-linear-gradient(top, #f31414, #ff0000);
@@ -152,11 +157,11 @@
   background-image: linear-gradient(top, #f31414, #ff0000);
 }
 
-/* line 170, scss/styles.scss */
+/* line 175, scss/styles.scss */
 #side {
   width: 300px;
 }
-/* line 174, scss/styles.scss */
+/* line 179, scss/styles.scss */
 #side .button {
   margin: 20px 5px 0px 30px;
   text-align: center;
@@ -168,7 +173,7 @@
   padding: 6px 0px;
   font-size: 19px;
 }
-/* line 189, scss/styles.scss */
+/* line 194, scss/styles.scss */
 #side .button:hover {
   background-color: #f31414;
 }
