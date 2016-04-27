@@ -6,11 +6,14 @@ using System.Net.Http;
 using System.Web.Http;
 using BusinessApplication;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace BusinessApplication.Controllers
 {
     public class EmployeeController : ApiController
     {
+        private static readonly Regex regString = new Regex(@"^[\sA-Za-z0-9]$");
+        
         [Route("employees")]
         [HttpGet]
         public IHttpActionResult AllEmployees()
@@ -112,6 +115,12 @@ namespace BusinessApplication.Controllers
             string employeeName = employee["Name"].ToString();
             string employeePosition = employee["Position"].ToString();
 
+            // Performing post data validation
+            if(regString.IsMatch(employeeName) || regString.IsMatch(employeePosition))
+            {
+                return NotFound();
+            }
+
             using (var context = new BusinessDBEntities())
             {
                 Employee employeeToUpdate = context.Employees.Find(employeeID);
@@ -138,6 +147,13 @@ namespace BusinessApplication.Controllers
                 Name = employee["Name"].ToString(),
                 Position = employee["Position"].ToString(),
             };
+
+            // Performing post data validation
+            if (regString.IsMatch(employeeToAdd.Name) || regString.IsMatch(employeeToAdd.Position))
+            {
+                return NotFound();
+            }
+
             using (var context = new BusinessDBEntities())
             {
                 context.Employees.Add(employeeToAdd);

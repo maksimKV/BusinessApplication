@@ -5,11 +5,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace BusinessApplication.Controllers
 {
     public class PartnerController : ApiController
     {
+        private static readonly Regex regString = new Regex(@"^[\sA-Za-z0-9]$");
+        private static readonly Regex regEmail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        private static readonly Regex regPhone = new Regex(@"\(?\d{3}\)?-? *\d{3}-? *-?\d{4}");
+
         [Route("partners")]
         [HttpGet]
         public IHttpActionResult AllPartners()
@@ -104,6 +109,12 @@ namespace BusinessApplication.Controllers
             string partnerEmail = partner["Email"].ToString();
             string partnerPhone = partner["Phone"].ToString();
 
+            // Performing a post data validation
+            if(regString.IsMatch(partnerName) || regEmail.IsMatch(partnerEmail) || regPhone.IsMatch(partnerPhone))
+            {
+                return NotFound();
+            }
+
             using (var context = new BusinessDBEntities())
             {
                 Partner partnerToUpdate = context.Partners.Find(partnerID);
@@ -130,6 +141,12 @@ namespace BusinessApplication.Controllers
                 Email = partner["Email"].ToString(),
                 Phone = partner["Phone"].ToString()
             };
+
+            // Performing a post data validation
+            if (regString.IsMatch(newPartner.Name) || regEmail.IsMatch(newPartner.Email) || regPhone.IsMatch(newPartner.Phone))
+            {
+                return NotFound();
+            }
 
             using (var context = new BusinessDBEntities())
             {
